@@ -1,5 +1,7 @@
 # TrustLens AI
 
+[![Tests](https://github.com/akshith2001/trustlens-ai/actions/workflows/tests.yml/badge.svg)](https://github.com/akshith2001/trustlens-ai/actions/workflows/tests.yml)
+
 TrustLens AI is a research prototype for evaluating whether machine-learning
 predictions are accurate, calibrated, explainable, and suitable for human
 review. The first case study uses historical credit-risk data; a later module
