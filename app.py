@@ -6,6 +6,8 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
+from trustlens.governance import determine_governance_action
+
 
 ROOT = Path(__file__).resolve().parent
 FINAL_RESULT = json.loads(
@@ -23,8 +25,8 @@ st.warning(
     "Do not use it for real lending decisions."
 )
 
-overview, governance, evidence, limitations = st.tabs(
-    ["Overview", "Human governance", "Evidence", "Limitations"]
+overview, simulator, governance, evidence, limitations = st.tabs(
+    ["Overview", "Governance simulator", "Human governance", "Evidence", "Limitations"]
 )
 
 with overview:
@@ -42,6 +44,50 @@ with overview:
     st.markdown(
         "The governed model found **50 of 60** higher-risk records and missed "
         "10. It also produced **73 false alarms**, so outputs require human review."
+    )
+
+with simulator:
+    st.subheader("Governance simulator")
+    st.caption(
+        "Explore locked system rules using hypothetical signals. This does not "
+        "run a credit model or assess a person."
+    )
+    probability = st.slider(
+        "Hypothetical calibrated higher-risk probability",
+        min_value=0.0,
+        max_value=1.0,
+        value=0.20,
+        step=0.01,
+    )
+    drift_auc = st.slider(
+        "Population-shift AUC",
+        min_value=0.0,
+        max_value=1.0,
+        value=0.50,
+        step=0.01,
+    )
+    is_ood = st.checkbox("Record flagged as out of distribution")
+    action, reason = determine_governance_action(
+        probability,
+        drift_auc=drift_auc,
+        is_out_of_distribution=is_ood,
+    )
+    labels = {
+        "continue_with_monitoring": "CONTINUE WITH MONITORING",
+        "human_review_required": "HUMAN REVIEW REQUIRED",
+        "pause_for_human_review": "PAUSE FOR HUMAN REVIEW",
+        "pause_and_investigate": "PAUSE SYSTEM AND INVESTIGATE",
+    }
+    if action == "continue_with_monitoring":
+        st.success(labels[action])
+    elif action == "human_review_required":
+        st.warning(labels[action])
+    else:
+        st.error(labels[action])
+    st.write(reason)
+    st.markdown(
+        "**Rule precedence:** population drift → individual OOD → threshold "
+        "uncertainty/higher-risk warning → monitored continuation."
     )
 
 with governance:
