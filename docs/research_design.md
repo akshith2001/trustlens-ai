@@ -50,3 +50,16 @@ numeric and one-hot categorical preprocessing. It flagged 5.0% of a normal
 holdout but only 12.5% of controlled numerical extremes. This sensitivity was
 judged inadequate. The next version separates numerical anomaly screening with
 robust scaling from the planned categorical-rarity detector.
+
+## Locked-model error analysis
+
+After the one-time final evaluation, TrustLens may reproduce the deterministic
+locked predictions for descriptive error analysis. It ranks false-negative and
+false-positive rates across categorical groups and numeric quartiles only when
+the relevant class has at least ten records in the slice. Excluded model inputs
+are also excluded from this analysis.
+
+This is diagnostic reporting, not another development stage. The slice results
+must not be used to alter the model or threshold. Patterns found by searching
+many slices in a small historical dataset may be unstable, non-causal and
+unsuitable for present-day decisions.

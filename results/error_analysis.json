@@ -1,0 +1,152 @@
+{
+  "analysis_type": "post-hoc descriptive slice diagnostics",
+  "minimum_class_support": 10,
+  "model_changed_or_retuned": false,
+  "warning": "Many slices were inspected on a small historical test set. Patterns may be unstable and are not causal or deployment evidence.",
+  "rankings": {
+    "highest_false_negative_rate": [
+      {
+        "feature": "checking_account_status",
+        "group": "4",
+        "class_support": 11,
+        "errors": 8,
+        "error_rate": 0.7272727272727273
+      },
+      {
+        "feature": "property",
+        "group": "1",
+        "class_support": 11,
+        "errors": 4,
+        "error_rate": 0.36363636363636365
+      },
+      {
+        "feature": "job",
+        "group": "2",
+        "class_support": 17,
+        "errors": 5,
+        "error_rate": 0.29411764705882354
+      },
+      {
+        "feature": "age_years",
+        "group": "(42.0, 75.0]",
+        "class_support": 11,
+        "errors": 3,
+        "error_rate": 0.2727272727272727
+      },
+      {
+        "feature": "duration_months",
+        "group": "(18.0, 24.0]",
+        "class_support": 16,
+        "errors": 4,
+        "error_rate": 0.25
+      },
+      {
+        "feature": "credit_history",
+        "group": "4",
+        "class_support": 16,
+        "errors": 4,
+        "error_rate": 0.25
+      },
+      {
+        "feature": "purpose",
+        "group": "9",
+        "class_support": 13,
+        "errors": 3,
+        "error_rate": 0.23076923076923078
+      },
+      {
+        "feature": "credit_amount",
+        "group": "(2530.0, 4349.25]",
+        "class_support": 13,
+        "errors": 3,
+        "error_rate": 0.23076923076923078
+      },
+      {
+        "feature": "housing",
+        "group": "2",
+        "class_support": 35,
+        "errors": 7,
+        "error_rate": 0.2
+      },
+      {
+        "feature": "duration_months",
+        "group": "(3.999, 12.0]",
+        "class_support": 15,
+        "errors": 3,
+        "error_rate": 0.2
+      }
+    ],
+    "highest_false_positive_rate": [
+      {
+        "feature": "checking_account_status",
+        "group": "1",
+        "class_support": 32,
+        "errors": 30,
+        "error_rate": 0.9375
+      },
+      {
+        "feature": "credit_history",
+        "group": "3",
+        "class_support": 12,
+        "errors": 10,
+        "error_rate": 0.8333333333333334
+      },
+      {
+        "feature": "housing",
+        "group": "3",
+        "class_support": 12,
+        "errors": 10,
+        "error_rate": 0.8333333333333334
+      },
+      {
+        "feature": "checking_account_status",
+        "group": "2",
+        "class_support": 28,
+        "errors": 23,
+        "error_rate": 0.8214285714285714
+      },
+      {
+        "feature": "purpose",
+        "group": "2",
+        "class_support": 32,
+        "errors": 25,
+        "error_rate": 0.78125
+      },
+      {
+        "feature": "other_installment_plans",
+        "group": "1",
+        "class_support": 18,
+        "errors": 14,
+        "error_rate": 0.7777777777777778
+      },
+      {
+        "feature": "duration_months",
+        "group": "(24.0, 60.0]",
+        "class_support": 24,
+        "errors": 17,
+        "error_rate": 0.7083333333333334
+      },
+      {
+        "feature": "property",
+        "group": "4",
+        "class_support": 20,
+        "errors": 14,
+        "error_rate": 0.7
+      },
+      {
+        "feature": "other_debtors",
+        "group": "3",
+        "class_support": 10,
+        "errors": 7,
+        "error_rate": 0.7
+      },
+      {
+        "feature": "property",
+        "group": "2",
+        "class_support": 42,
+        "errors": 28,
+        "error_rate": 0.6666666666666666
+      }
+    ]
+  }
+}

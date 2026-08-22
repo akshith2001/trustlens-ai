@@ -29,6 +29,8 @@ majority baseline's 300 to 123, while also producing 73 false positives. See
 and [`MODEL_CARD.md`](MODEL_CARD.md) for intended use, governance and risks.
 The results report also includes confidence intervals so the small held-out
 sample is not presented with false precision.
+Post-hoc error-slice diagnostics also show where the locked model failed on its
+historical holdout, without using those findings to retune the model.
 
 ## Architecture
 

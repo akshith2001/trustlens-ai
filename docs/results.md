@@ -63,6 +63,25 @@ Higher-risk recall declined from 0.879 to 0.833, balanced accuracy declined from
 This gap is reported as evidence of sampling uncertainty and limited data, not
 used as a reason to retune against the test partition.
 
+## Post-hoc error analysis
+
+Descriptive slice analysis was performed after locking and evaluating the
+model. To reduce extremely small comparisons, a slice was reported only when
+it contained at least ten records from the class relevant to that error rate.
+The highest observed false-negative rate was for
+`checking_account_status=4` (8/11, 0.727). The highest observed false-positive
+rate was for `checking_account_status=1` (30/32, 0.938). Other elevated error
+rates appeared in several property, job, credit-history, housing, purpose, age
+and duration slices.
+
+These results indicate that the locked model's errors are not evenly distributed
+and that its strongest feature can be associated with sharply different error
+patterns across recorded codes. They do not establish causation, unfairness or
+present-day behaviour. The data are historical, individual slices remain small,
+and many slices were inspected. The findings therefore support human review and
+external validation rather than model deployment or post-test retuning. Full
+machine-readable results are stored in `results/error_analysis.json`.
+
 ## Other development findings
 
 - Nested sigmoid calibration reduced development Brier score from 0.239 to

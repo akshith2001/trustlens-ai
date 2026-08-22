@@ -2,6 +2,8 @@
 
 from dataclasses import asdict, dataclass
 
+import numpy as np
+import pandas as pd
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.metrics import brier_score_loss, log_loss
 from sklearn.model_selection import train_test_split
@@ -44,23 +46,7 @@ class FinalTestResult:
 def evaluate_locked_model(dataset: CreditDataset) -> FinalTestResult:
     """Fit on development data and evaluate the untouched test partition."""
 
-    train_features, test_features, train_target, test_target = train_test_split(
-        dataset.features,
-        dataset.target,
-        test_size=TEST_SIZE,
-        random_state=RANDOM_STATE,
-        stratify=dataset.target,
-    )
-    model = CalibratedClassifierCV(
-        estimator=build_random_forest(
-            excluded_features=GOVERNED_EXCLUDED_FEATURES
-        ),
-        method="sigmoid",
-        cv=3,
-    )
-    model.fit(train_features, train_target)
-    probabilities = model.predict_proba(test_features)[:, 1]
-    predictions = (probabilities >= GOVERNED_DECISION_THRESHOLD).astype(int)
+    _, test_target, probabilities, predictions = generate_locked_predictions(dataset)
     metrics = evaluate_predictions(test_target.to_numpy(), predictions)
 
     return FinalTestResult(
@@ -79,8 +65,30 @@ def evaluate_locked_model(dataset: CreditDataset) -> FinalTestResult:
         weighted_error_cost=metrics.weighted_error_cost,
         brier_score=float(brier_score_loss(test_target, probabilities)),
         log_loss=float(log_loss(test_target, probabilities)),
-        expected_calibration_error=expected_calibration_error(
-            test_target.to_numpy(), probabilities
-        ),
+        expected_calibration_error=expected_calibration_error(test_target.to_numpy(), probabilities),
     )
 
+
+def generate_locked_predictions(
+    dataset: CreditDataset,
+) -> tuple[pd.DataFrame, pd.Series, np.ndarray, np.ndarray]:
+    """Reproduce locked predictions for diagnostics without model tuning."""
+
+    train_features, test_features, train_target, test_target = train_test_split(
+        dataset.features,
+        dataset.target,
+        test_size=TEST_SIZE,
+        random_state=RANDOM_STATE,
+        stratify=dataset.target,
+    )
+    model = CalibratedClassifierCV(
+        estimator=build_random_forest(
+            excluded_features=GOVERNED_EXCLUDED_FEATURES
+        ),
+        method="sigmoid",
+        cv=3,
+    )
+    model.fit(train_features, train_target)
+    probabilities = model.predict_proba(test_features)[:, 1]
+    predictions = (probabilities >= GOVERNED_DECISION_THRESHOLD).astype(int)
+    return test_features, test_target, probabilities, predictions
