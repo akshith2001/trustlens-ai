@@ -19,7 +19,8 @@ The governed tabular research engine is implemented with 16 automated tests.
 Its locked model was evaluated once on a 200-record holdout. It achieved 0.833
 higher-risk recall and reduced the predefined weighted error cost from the
 majority baseline's 300 to 123, while also producing 73 false positives. See
-[`docs/results.md`](docs/results.md) for the complete, limitation-aware report.
+[`docs/results.md`](docs/results.md) for the complete, limitation-aware report
+and [`MODEL_CARD.md`](MODEL_CARD.md) for intended use, governance and risks.
 
 ## Safety and scope
 
