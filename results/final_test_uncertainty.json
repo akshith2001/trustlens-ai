@@ -1,0 +1,21 @@
+{
+  "method": "two-sided 95% Wilson score interval",
+  "purpose": "post-hoc uncertainty reporting; no model selection or retuning",
+  "intervals": {
+    "recall": {
+      "estimate": 0.8333333333333334,
+      "lower": 0.7196838683638547,
+      "upper": 0.9068682302080855
+    },
+    "precision": {
+      "estimate": 0.4065040650406504,
+      "lower": 0.3238098760638868,
+      "upper": 0.494861398976293
+    },
+    "specificity": {
+      "estimate": 0.4785714285714286,
+      "lower": 0.39750661382204727,
+      "upper": 0.5607807947652133
+    }
+  }
+}

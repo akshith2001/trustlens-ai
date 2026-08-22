@@ -27,6 +27,8 @@ higher-risk recall and reduced the predefined weighted error cost from the
 majority baseline's 300 to 123, while also producing 73 false positives. See
 [`docs/results.md`](docs/results.md) for the complete, limitation-aware report
 and [`MODEL_CARD.md`](MODEL_CARD.md) for intended use, governance and risks.
+The results report also includes confidence intervals so the small held-out
+sample is not presented with false precision.
 
 ## Architecture
 

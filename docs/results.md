@@ -34,6 +34,22 @@ that file.
 | Log loss | 0.521 |
 | Expected calibration error | 0.070 |
 
+## Statistical uncertainty
+
+Because the locked test partition contains only 200 records, point estimates
+must not be treated as exact population performance. Two-sided 95% Wilson score
+intervals calculated from the locked confusion matrix are:
+
+| Metric | Estimate | 95% confidence interval |
+|---|---:|---:|
+| Recall (higher risk) | 0.833 | 0.720--0.907 |
+| Precision (higher risk) | 0.407 | 0.324--0.495 |
+| Specificity (lower risk) | 0.479 | 0.398--0.561 |
+
+These are post-hoc uncertainty summaries. They were not used to select, tune or
+change the locked model, and they do not address dataset shift or external
+validity.
+
 The majority-class test baseline produced 60 false negatives and a weighted
 error cost of 300. The governed model reduced this predefined cost by 59%, but
 its low precision and 73 false positives demonstrate why outputs require human
@@ -71,4 +87,3 @@ used as a reason to retune against the test partition.
 - Subgroup diagnostics do not establish causation, fairness, or discrimination.
 - Synthetic drift and anomaly fixtures are not observed real-world events.
 - This research prototype must not make real financial decisions.
-
