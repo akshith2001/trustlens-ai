@@ -1,0 +1,23 @@
+{
+  "calibration": {
+    "raw_brier_score": 0.239,
+    "calibrated_brier_score": 0.163,
+    "raw_expected_calibration_error": 0.267,
+    "calibrated_expected_calibration_error": 0.032
+  },
+  "drift": {
+    "random_holdout_auc": 0.485,
+    "controlled_shift_auc": 0.779,
+    "pause_threshold": 0.7
+  },
+  "ood": {
+    "normal_holdout_flag_rate": 0.075,
+    "synthetic_extreme_flag_rate": 0.74
+  },
+  "review_policy": [
+    {"budget": 0.0, "coverage": 1.0, "errors_captured": 0.0, "potential_cost_reduction": 0.0},
+    {"budget": 0.1, "coverage": 0.9, "errors_captured": 0.117, "potential_cost_reduction": 0.111},
+    {"budget": 0.2, "coverage": 0.8, "errors_captured": 0.23, "potential_cost_reduction": 0.258},
+    {"budget": 0.3, "coverage": 0.7, "errors_captured": 0.367, "potential_cost_reduction": 0.442}
+  ]
+}

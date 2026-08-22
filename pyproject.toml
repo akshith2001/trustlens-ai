@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trustlens-ai"
+version = "0.1.0"
+description = "Human-governed reliability and explainability auditing for AI systems"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "matplotlib>=3.11",
+    "numpy>=2.3",
+    "pandas>=2.3",
+    "scikit-learn>=1.7",
+    "streamlit>=1.52",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4",
+    "pytest-cov>=6.2",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

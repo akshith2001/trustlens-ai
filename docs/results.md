@@ -1,0 +1,74 @@
+# Locked results
+
+## Final test protocol
+
+The final 20% stratified test partition was evaluated once after the model,
+excluded features, probability calibration method, and decision threshold had
+been selected using development data. The result was written to
+`results/final_test_metrics.json`; the evaluation script refuses to overwrite
+that file.
+
+## Governed model
+
+- Cost-sensitive random forest
+- Sigmoid probability calibration with three internal folds
+- Excluded model inputs: `personal_status_sex`, `foreign_worker`
+- Locked higher-risk decision threshold: 0.20
+- Final test records: 200 (140 lower risk, 60 higher risk)
+
+## Final test result
+
+| Metric | Result |
+|---|---:|
+| Accuracy | 0.585 |
+| Balanced accuracy | 0.656 |
+| Precision (higher risk) | 0.407 |
+| Recall (higher risk) | 0.833 |
+| F1 (higher risk) | 0.546 |
+| True negatives | 67 |
+| False positives | 73 |
+| False negatives | 10 |
+| True positives | 50 |
+| Weighted error cost | 123 |
+| Brier score | 0.173 |
+| Log loss | 0.521 |
+| Expected calibration error | 0.070 |
+
+The majority-class test baseline produced 60 false negatives and a weighted
+error cost of 300. The governed model reduced this predefined cost by 59%, but
+its low precision and 73 false positives demonstrate why outputs require human
+review and must not be used for real lending decisions.
+
+## Generalisation gap
+
+Performance on the locked test set was weaker than development estimates.
+Higher-risk recall declined from 0.879 to 0.833, balanced accuracy declined from
+0.698 to 0.656, and expected calibration error increased from 0.032 to 0.070.
+This gap is reported as evidence of sampling uncertainty and limited data, not
+used as a reason to retune against the test partition.
+
+## Other development findings
+
+- Nested sigmoid calibration reduced development Brier score from 0.239 to
+  0.163 and expected calibration error from 0.267 to 0.032.
+- A 20% human-review budget captured 23.0% of observed development errors and
+  produced a potential weighted-cost reduction of 25.8%, assuming reviewed
+  errors are corrected.
+- Adversarial drift AUC was 0.485 for a random holdout and 0.779 for a controlled
+  synthetic shift.
+- The revised numerical OOD detector flagged 7.5% of normal holdout records and
+  74.0% of controlled synthetic extremes.
+- Removing the ambiguous personal-status/sex field and the foreign-worker field
+  retained nearly all cross-validated performance.
+
+## Interpretation limits
+
+- The source data are from 1973--1975 and are not representative of current
+  lending populations.
+- Higher-risk records were oversampled.
+- Credit amount was transformed using an undocumented method.
+- Gender fairness is not assessable from the combined personal-status/sex field.
+- Subgroup diagnostics do not establish causation, fairness, or discrimination.
+- Synthetic drift and anomaly fixtures are not observed real-world events.
+- This research prototype must not make real financial decisions.
+
