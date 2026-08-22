@@ -8,6 +8,9 @@
 **Research report:**
 [TrustLens AI: Human-Governed Machine Learning for Reliability-Aware Risk Classification](reports/TrustLens_AI_Research_Report.pdf)
 
+**One-page research summary:**
+[TrustLens AI supervisor brief](reports/TrustLens_AI_One_Page_Research_Summary.pdf)
+
 TrustLens AI is a research prototype for evaluating whether machine-learning
 predictions are accurate, calibrated, explainable, and suitable for human
 review. The first case study uses historical credit-risk data; a later module
