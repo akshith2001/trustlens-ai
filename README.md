@@ -22,6 +22,12 @@ majority baseline's 300 to 123, while also producing 73 false positives. See
 [`docs/results.md`](docs/results.md) for the complete, limitation-aware report
 and [`MODEL_CARD.md`](MODEL_CARD.md) for intended use, governance and risks.
 
+## Architecture
+
+The project separates model development, locked final evaluation and runtime
+governance. See the rendered pipeline and full methodology in
+[`docs/architecture.md`](docs/architecture.md).
+
 ## Safety and scope
 
 This project is an educational research prototype. It must not be used to make
