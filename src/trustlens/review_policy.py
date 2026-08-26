@@ -63,9 +63,8 @@ def analyse_review_budgets(
         remaining = evaluate_predictions(actual[retained], predictions[retained])
         captured_errors = int((reviewed & original_errors).sum())
         potential_reduction = (
-            (original.weighted_error_cost - remaining.weighted_error_cost)
-            / original.weighted_error_cost
-        )
+            original.weighted_error_cost - remaining.weighted_error_cost
+        ) / original.weighted_error_cost
         results.append(
             ReviewPolicyResult(
                 review_budget=budget,

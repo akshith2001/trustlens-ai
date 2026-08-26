@@ -30,4 +30,21 @@ jobs:
         run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
 
       - name: Run automated tests
-        run: python -m pytest --cov=trustlens --cov-report=term-missing
+        run: python -m pytest --cov=trustlens --cov-report=term-missing --cov-fail-under=70
+
+      - name: Check code quality
+        run: >-
+          ruff check src tests scripts app.py &&
+          ruff format --check src tests scripts app.py
+
+      - name: Audit Python dependencies
+        run: pip-audit
+
+      - name: Verify benchmark command
+        run: trustlens-benchmark --folds 2 --output benchmark-smoke-test.json
+
+      - name: Verify controlled benchmark suite
+        run: >-
+          trustlens-benchmark-suite --folds 2 --resamples 100
+          --output controlled-suite-smoke-test.json
+          --report controlled-suite-smoke-test.md

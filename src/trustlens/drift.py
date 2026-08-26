@@ -11,7 +11,6 @@ from sklearn.pipeline import Pipeline
 from trustlens.baseline import RANDOM_STATE
 from trustlens.features import build_preprocessor
 
-
 DEFAULT_DRIFT_AUC_THRESHOLD = 0.70
 
 
@@ -63,4 +62,3 @@ def detect_covariate_drift(
         drift_detected=action == "pause_and_investigate",
         action=action,
     )
-

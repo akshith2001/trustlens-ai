@@ -6,7 +6,6 @@ from pathlib import Path
 from trustlens.data import load_credit_dataset
 from trustlens.final_evaluation import evaluate_locked_model
 
-
 RESULT_PATH = Path("results/final_test_metrics.json")
 
 
@@ -27,4 +26,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

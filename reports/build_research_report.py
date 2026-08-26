@@ -488,7 +488,7 @@ for ref in refs:
     p.add_run(ref)
 
 add_heading(doc, "Reproducibility statement", 1)
-add_para(doc, "The public repository contains the validated data loader, modelling and evaluation code, locked JSON results, uncertainty and error-analysis artifacts, figure-generation script, Streamlit dashboard, model card and 27 automated tests. GitHub Actions executes the test suite on supported Python versions. Repository: https://github.com/akshith2001/trustlens-ai. Live dashboard: https://trustlens-governance-ai.streamlit.app/.")
+add_para(doc, "The public repository contains the validated data loader, modelling and evaluation code, locked JSON results, uncertainty and error-analysis artifacts, figure-generation script, Streamlit dashboard, model card and an automated test suite. GitHub Actions executes the test suite on supported Python versions. Repository: https://github.com/akshith2001/trustlens-ai. Live dashboard: https://trustlens-governance-ai.streamlit.app/.")
 
 doc.core_properties.title = "TrustLens AI: Human-Governed Machine Learning for Reliability-Aware Risk Classification"
 doc.core_properties.subject = "Responsible AI research report"

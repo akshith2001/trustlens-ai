@@ -2,10 +2,13 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.test-tmp*/
 .coverage
 htmlcov/
 data/raw/
 artifacts/
+build/
+.audit-cache/
 .env
 .vscode/
 *.egg-info/

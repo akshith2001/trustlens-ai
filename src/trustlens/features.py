@@ -3,7 +3,6 @@
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-
 NUMERIC_FEATURES = [
     "duration_months",
     "credit_amount",
@@ -30,9 +29,7 @@ CATEGORICAL_FEATURES = [
     "foreign_worker",
 ]
 
-GOVERNED_EXCLUDED_FEATURES = frozenset(
-    {"personal_status_sex", "foreign_worker"}
-)
+GOVERNED_EXCLUDED_FEATURES = frozenset({"personal_status_sex", "foreign_worker"})
 
 
 def build_preprocessor(

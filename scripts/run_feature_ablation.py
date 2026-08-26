@@ -13,7 +13,9 @@ def main() -> None:
         cross_validate_random_forest(dataset),
         cross_validate_restricted_random_forest(dataset),
     ]
-    print("Excluded in restricted model: age_years, personal_status_sex, foreign_worker")
+    print(
+        "Excluded in restricted model: age_years, personal_status_sex, foreign_worker"
+    )
     print(
         f"{'model':42} {'bal_acc':>8} {'precision':>10} "
         f"{'recall':>8} {'f1':>8} {'cost':>8}"
@@ -32,4 +34,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

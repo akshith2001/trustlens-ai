@@ -1,19 +1,19 @@
 """Dataset loading and validation for the TrustLens case studies."""
 
 from dataclasses import dataclass
+from hashlib import sha256
 from pathlib import Path
 from urllib.request import urlopen
 from zipfile import ZipFile
 
 import pandas as pd
 
-
 SOUTH_GERMAN_CREDIT_DATASET_ID = 573
 DATASET_ARCHIVE_URL = (
-    "https://archive.ics.uci.edu/static/public/573/"
-    "south%2Bgerman%2Bcredit%2Bupdate.zip"
+    "https://archive.ics.uci.edu/static/public/573/south%2Bgerman%2Bcredit%2Bupdate.zip"
 )
 ARCHIVE_MEMBER = "SouthGermanCredit.asc"
+ARCHIVE_SHA256 = "0b40d40eb7321693d559e247a556f88a6cc8df8489c3cb2ae084db7592584551"
 EXPECTED_ROWS = 1_000
 EXPECTED_FEATURES = 20
 COLUMN_NAMES = {
@@ -49,13 +49,28 @@ class CreditDataset:
 
 
 def _default_cache_path() -> Path:
-    return Path(__file__).resolve().parents[2] / "data" / "raw" / "south_german_credit.zip"
+    return (
+        Path(__file__).resolve().parents[2] / "data" / "raw" / "south_german_credit.zip"
+    )
 
 
 def _download_archive(cache_path: Path) -> None:
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     with urlopen(DATASET_ARCHIVE_URL, timeout=30) as response:  # noqa: S310
-        cache_path.write_bytes(response.read())
+        archive_bytes = response.read()
+    _validate_archive_bytes(archive_bytes)
+    cache_path.write_bytes(archive_bytes)
+
+
+def _validate_archive_bytes(archive_bytes: bytes) -> None:
+    """Reject data that do not match the research artifact used by TrustLens."""
+
+    digest = sha256(archive_bytes).hexdigest()
+    if digest != ARCHIVE_SHA256:
+        raise ValueError(
+            "South German Credit archive checksum mismatch: "
+            f"received {digest}, expected {ARCHIVE_SHA256}"
+        )
 
 
 def load_credit_dataset(cache_path: Path | None = None) -> CreditDataset:
@@ -68,6 +83,8 @@ def load_credit_dataset(cache_path: Path | None = None) -> CreditDataset:
     archive_path = cache_path or _default_cache_path()
     if not archive_path.exists():
         _download_archive(archive_path)
+
+    _validate_archive_bytes(archive_path.read_bytes())
 
     with ZipFile(archive_path) as archive:
         with archive.open(ARCHIVE_MEMBER) as data_file:

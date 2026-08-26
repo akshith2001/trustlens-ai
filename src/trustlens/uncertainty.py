@@ -14,7 +14,9 @@ class Interval:
         return asdict(self)
 
 
-def wilson_interval(successes: int, trials: int, z: float = 1.959963984540054) -> Interval:
+def wilson_interval(
+    successes: int, trials: int, z: float = 1.959963984540054
+) -> Interval:
     """Return a two-sided Wilson score interval for a binomial proportion."""
 
     if trials <= 0:
@@ -29,8 +31,7 @@ def wilson_interval(successes: int, trials: int, z: float = 1.959963984540054) -
     margin = (
         z
         * sqrt(
-            (estimate * (1 - estimate) / trials)
-            + (z_squared / (4 * trials * trials))
+            (estimate * (1 - estimate) / trials) + (z_squared / (4 * trials * trials))
         )
         / denominator
     )
@@ -42,12 +43,18 @@ def wilson_interval(successes: int, trials: int, z: float = 1.959963984540054) -
 
 
 def classification_intervals(
-    *, true_negatives: int, false_positives: int, false_negatives: int, true_positives: int
+    *,
+    true_negatives: int,
+    false_positives: int,
+    false_negatives: int,
+    true_positives: int,
 ) -> dict[str, Interval]:
     """Calculate 95% Wilson intervals from a locked confusion matrix."""
 
     return {
         "recall": wilson_interval(true_positives, true_positives + false_negatives),
         "precision": wilson_interval(true_positives, true_positives + false_positives),
-        "specificity": wilson_interval(true_negatives, true_negatives + false_positives),
+        "specificity": wilson_interval(
+            true_negatives, true_negatives + false_positives
+        ),
     }

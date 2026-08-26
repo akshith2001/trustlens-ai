@@ -9,7 +9,9 @@ def test_subgroup_metrics_report_recall_and_false_positive_rate() -> None:
     predicted = np.array([1, 1, 0, 0])
     groups = pd.Series(["a", "a", "b", "b"])
 
-    results = {result.group: result for result in subgroup_metrics(actual, predicted, groups)}
+    results = {
+        result.group: result for result in subgroup_metrics(actual, predicted, groups)
+    }
 
     assert results["a"].recall == 1.0
     assert results["a"].false_positive_rate == 1.0

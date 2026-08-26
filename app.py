@@ -8,7 +8,6 @@ import streamlit as st
 
 from trustlens.governance import determine_governance_action
 
-
 ROOT = Path(__file__).resolve().parent
 FINAL_RESULT = json.loads(
     (ROOT / "results" / "final_test_metrics.json").read_text(encoding="utf-8")
@@ -39,7 +38,7 @@ with overview:
     st.image(
         str(ROOT / "figures" / "final_test_summary.png"),
         caption="Generated from the immutable final-test JSON result.",
-        use_container_width=True,
+        width="stretch",
     )
     st.markdown(
         "The governed model found **50 of 60** higher-risk records and missed "
@@ -135,7 +134,7 @@ with evidence:
             ],
         }
     )
-    st.dataframe(calibration, hide_index=True, use_container_width=True)
+    st.dataframe(calibration, hide_index=True, width="stretch")
     st.subheader("Shift and anomaly checks")
     st.markdown(
         f"- Random-holdout drift AUC: **{DEVELOPMENT['drift']['random_holdout_auc']:.3f}**\n"

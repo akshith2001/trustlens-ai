@@ -37,9 +37,7 @@ def test_probability_routes_to_monitoring_or_review() -> None:
 
 def test_invalid_probability_is_rejected() -> None:
     try:
-        determine_governance_action(
-            1.01, drift_auc=0.50, is_out_of_distribution=False
-        )
+        determine_governance_action(1.01, drift_auc=0.50, is_out_of_distribution=False)
     except ValueError as error:
         assert "probability" in str(error)
     else:

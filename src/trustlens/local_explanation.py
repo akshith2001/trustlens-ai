@@ -58,9 +58,7 @@ def explain_validation_record(dataset: CreditDataset) -> LocalExplanation:
         stratify=target,
     )
     model = CalibratedClassifierCV(
-        estimator=build_random_forest(
-            excluded_features=GOVERNED_EXCLUDED_FEATURES
-        ),
+        estimator=build_random_forest(excluded_features=GOVERNED_EXCLUDED_FEATURES),
         method="sigmoid",
         cv=3,
     )
@@ -95,4 +93,3 @@ def explain_validation_record(dataset: CreditDataset) -> LocalExplanation:
             "not causal effects, feasible interventions, or financial advice."
         ),
     )
-

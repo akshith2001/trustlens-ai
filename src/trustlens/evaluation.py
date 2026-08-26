@@ -12,7 +12,6 @@ from sklearn.metrics import (
     recall_score,
 )
 
-
 FALSE_NEGATIVE_COST = 5
 FALSE_POSITIVE_COST = 1
 
@@ -52,4 +51,3 @@ def evaluate_predictions(
         true_positives=int(tp),
         weighted_error_cost=int(weighted_cost),
     )
-

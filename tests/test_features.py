@@ -1,11 +1,11 @@
 from trustlens.data import EXPECTED_FEATURES
+from trustlens.experiments import build_logistic_regression
 from trustlens.features import (
     CATEGORICAL_FEATURES,
     GOVERNED_EXCLUDED_FEATURES,
     NUMERIC_FEATURES,
+    build_preprocessor,
 )
-from trustlens.features import build_preprocessor
-from trustlens.experiments import build_logistic_regression
 
 
 def test_feature_roles_are_disjoint_and_complete() -> None:
@@ -28,9 +28,7 @@ def test_preprocessor_can_exclude_sensitive_features() -> None:
         frozenset({"age_years", "personal_status_sex", "foreign_worker"})
     )
     selected_columns = {
-        column
-        for _, _, columns in preprocessor.transformers
-        for column in columns
+        column for _, _, columns in preprocessor.transformers for column in columns
     }
 
     assert "age_years" not in selected_columns

@@ -4,10 +4,20 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "trustlens-ai"
-version = "0.1.0"
+version = "0.2.0"
 description = "Human-governed reliability and explainability auditing for AI systems"
 readme = "README.md"
 requires-python = ">=3.11"
+authors = [{ name = "Akshith Moharampudi" }]
+keywords = ["responsible-ai", "model-governance", "explainable-ai", "machine-learning"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
     "matplotlib>=3.11",
     "numpy>=2.3",
@@ -16,14 +26,36 @@ dependencies = [
     "streamlit>=1.52",
 ]
 
+[project.scripts]
+trustlens-benchmark = "trustlens.benchmark:main"
+trustlens-benchmark-suite = "trustlens.benchmark_suite:main"
+
 [project.optional-dependencies]
 dev = [
+    "build>=1.3",
+    "pip-audit>=2.9",
     "pytest>=8.4",
     "pytest-cov>=6.2",
+    "ruff>=0.12",
 ]
+
+[project.urls]
+Homepage = "https://github.com/akshith2001/trustlens-ai"
+Documentation = "https://github.com/akshith2001/trustlens-ai#readme"
+Repository = "https://github.com/akshith2001/trustlens-ai"
+Issues = "https://github.com/akshith2001/trustlens-ai/issues"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+extend-exclude = ["reports", "results", "figures"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B", "UP", "S"]
+ignore = ["S101"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

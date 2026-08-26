@@ -5,7 +5,6 @@ from pathlib import Path
 
 from trustlens.uncertainty import classification_intervals
 
-
 ROOT = Path(__file__).resolve().parents[1]
 METRICS_PATH = ROOT / "results" / "final_test_metrics.json"
 OUTPUT_PATH = ROOT / "results" / "final_test_uncertainty.json"

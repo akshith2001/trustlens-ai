@@ -6,7 +6,6 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 RESULT_PATH = Path("results/final_test_metrics.json")
 FIGURE_PATH = Path("figures/final_test_summary.png")
 
@@ -24,7 +23,9 @@ def main() -> None:
         result["recall"],
         result["f1"],
     ]
-    bars = axes[0].bar(metrics, values, color=["#315C8C", "#D9822B", "#2D7D46", "#7253A3"])
+    bars = axes[0].bar(
+        metrics, values, color=["#315C8C", "#D9822B", "#2D7D46", "#7253A3"]
+    )
     axes[0].set_ylim(0, 1)
     axes[0].set_ylabel("Score")
     axes[0].set_title("Locked final-test performance")
@@ -52,7 +53,9 @@ def main() -> None:
                 color="white" if matrix[row, column] > matrix.max() / 2 else "black",
             )
 
-    figure.suptitle("TrustLens AI — governed credit-risk research prototype", fontsize=14)
+    figure.suptitle(
+        "TrustLens AI — governed credit-risk research prototype", fontsize=14
+    )
     figure.text(
         0.5,
         0.01,

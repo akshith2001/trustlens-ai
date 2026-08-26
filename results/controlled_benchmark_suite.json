@@ -1,0 +1,103 @@
+{
+  "bootstrap_resamples": 1000,
+  "datasets": [
+    {
+      "controlled_shift_balanced_accuracy_delta": {
+        "cost_sensitive_logistic_regression": -0.10430839002267567,
+        "cost_sensitive_random_forest": -0.173469387755102
+      },
+      "dataset_name": "synthetic_linear_balanced",
+      "models": [
+        {
+          "balanced_accuracy": {
+            "confidence_level": 0.95,
+            "estimate": 0.7577375069522525,
+            "lower": 0.7336097181636342,
+            "upper": 0.7805964836387798
+          },
+          "model_name": "cost_sensitive_logistic_regression",
+          "weighted_cost_per_record": {
+            "confidence_level": 0.95,
+            "estimate": 0.314,
+            "lower": 0.27,
+            "upper": 0.365
+          }
+        },
+        {
+          "balanced_accuracy": {
+            "confidence_level": 0.95,
+            "estimate": 0.8629896086331972,
+            "lower": 0.8432057893352528,
+            "upper": 0.8828787386332162
+          },
+          "model_name": "cost_sensitive_random_forest",
+          "weighted_cost_per_record": {
+            "confidence_level": 0.95,
+            "estimate": 0.191,
+            "lower": 0.153,
+            "upper": 0.235
+          }
+        }
+      ],
+      "paired_cost_difference_random_forest_minus_logistic": {
+        "confidence_level": 0.95,
+        "estimate": -0.123,
+        "lower": -0.173,
+        "upper": -0.077
+      },
+      "positive_rate": 0.491,
+      "records": 1000
+    },
+    {
+      "controlled_shift_balanced_accuracy_delta": {
+        "cost_sensitive_logistic_regression": 0.049644648829431426,
+        "cost_sensitive_random_forest": -0.05539297658862874
+      },
+      "dataset_name": "synthetic_nonlinear_imbalanced",
+      "models": [
+        {
+          "balanced_accuracy": {
+            "confidence_level": 0.95,
+            "estimate": 0.5891261917273478,
+            "lower": 0.5643962234294682,
+            "upper": 0.6114641950971432
+          },
+          "model_name": "cost_sensitive_logistic_regression",
+          "weighted_cost_per_record": {
+            "confidence_level": 0.95,
+            "estimate": 0.654,
+            "lower": 0.601,
+            "upper": 0.7120249999999999
+          }
+        },
+        {
+          "balanced_accuracy": {
+            "confidence_level": 0.95,
+            "estimate": 0.7504504166353878,
+            "lower": 0.7244444372963731,
+            "upper": 0.7781416900877255
+          },
+          "model_name": "cost_sensitive_random_forest",
+          "weighted_cost_per_record": {
+            "confidence_level": 0.95,
+            "estimate": 0.45,
+            "lower": 0.386,
+            "upper": 0.513025
+          }
+        }
+      ],
+      "paired_cost_difference_random_forest_minus_logistic": {
+        "confidence_level": 0.95,
+        "estimate": -0.204,
+        "lower": -0.267,
+        "upper": -0.146
+      },
+      "positive_rate": 0.308,
+      "records": 1000
+    }
+  ],
+  "folds": 5,
+  "random_state": 42,
+  "schema_version": "1.0",
+  "scope": "Controlled synthetic robustness benchmark; not external domain validation and not evidence for operational decisions."
+}

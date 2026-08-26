@@ -52,10 +52,7 @@ def wilson_interval(
     centre = (proportion + (z**2 / (2 * total))) / denominator
     margin = (
         z
-        * np.sqrt(
-            (proportion * (1 - proportion) / total)
-            + (z**2 / (4 * total**2))
-        )
+        * np.sqrt((proportion * (1 - proportion) / total) + (z**2 / (4 * total**2)))
         / denominator
     )
     return max(0.0, centre - margin), min(1.0, centre + margin)
@@ -119,7 +116,5 @@ def audit_credit_subgroups(dataset: CreditDataset) -> FairnessAudit:
             "sex cannot be reliably recovered for every code."
         ),
         age_results=subgroup_metrics(actual, predicted, age_groups),
-        foreign_worker_code_results=subgroup_metrics(
-            actual, predicted, worker_codes
-        ),
+        foreign_worker_code_results=subgroup_metrics(actual, predicted, worker_codes),
     )

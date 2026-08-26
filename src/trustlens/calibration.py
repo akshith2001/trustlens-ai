@@ -92,9 +92,7 @@ def out_of_fold_probabilities(
         raw_model.fit(train_features, train_target)
 
         calibrated_model = CalibratedClassifierCV(
-            estimator=clone(
-                build_random_forest(excluded_features=excluded_features)
-            ),
+            estimator=clone(build_random_forest(excluded_features=excluded_features)),
             method="sigmoid",
             cv=3,
         )
@@ -139,11 +137,9 @@ def analyse_random_forest_calibration(
 ) -> CalibrationSummary:
     """Compare probabilities and select a cost-sensitive review threshold."""
 
-    actual, raw_probabilities, calibrated_probabilities = (
-        out_of_fold_probabilities(
-            dataset,
-            excluded_features=GOVERNED_EXCLUDED_FEATURES,
-        )
+    actual, raw_probabilities, calibrated_probabilities = out_of_fold_probabilities(
+        dataset,
+        excluded_features=GOVERNED_EXCLUDED_FEATURES,
     )
 
     selected_threshold, selected_metrics = select_cost_sensitive_threshold(

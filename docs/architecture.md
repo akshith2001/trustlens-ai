@@ -47,10 +47,11 @@ engine. It does not run the historical model or assess a person.
 
 ### 1. Data contract
 
-The loader retrieves the official South German Credit archive, validates the
-expected 20-column feature schema, maps the source target to
-`0 = lower risk` and `1 = higher risk`, and checks the class counts. Raw data
-are cached locally but excluded from Git because the loader is reproducible.
+The loader retrieves the official South German Credit archive, verifies its
+locked SHA-256 digest, validates the expected 20-column feature schema, maps
+the source target to `0 = lower risk` and `1 = higher risk`, and checks the
+class counts. Raw data are cached locally but excluded from Git because the
+loader is reproducible.
 
 ### 2. Locked data split
 

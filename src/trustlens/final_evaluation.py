@@ -65,7 +65,9 @@ def evaluate_locked_model(dataset: CreditDataset) -> FinalTestResult:
         weighted_error_cost=metrics.weighted_error_cost,
         brier_score=float(brier_score_loss(test_target, probabilities)),
         log_loss=float(log_loss(test_target, probabilities)),
-        expected_calibration_error=expected_calibration_error(test_target.to_numpy(), probabilities),
+        expected_calibration_error=expected_calibration_error(
+            test_target.to_numpy(), probabilities
+        ),
     )
 
 
@@ -82,9 +84,7 @@ def generate_locked_predictions(
         stratify=dataset.target,
     )
     model = CalibratedClassifierCV(
-        estimator=build_random_forest(
-            excluded_features=GOVERNED_EXCLUDED_FEATURES
-        ),
+        estimator=build_random_forest(excluded_features=GOVERNED_EXCLUDED_FEATURES),
         method="sigmoid",
         cv=3,
     )

@@ -1,0 +1,78 @@
+{
+  "candidates": [
+    {
+      "balanced_accuracy_mean": 0.6872023809523808,
+      "balanced_accuracy_std": 0.013876837174850899,
+      "f1_mean": 0.5757654323587319,
+      "f1_std": 0.012155439220674835,
+      "folds": 5,
+      "model_name": "cost_sensitive_random_forest",
+      "precision_mean": 0.4251609514244265,
+      "precision_std": 0.016143886294973504,
+      "rank": 1,
+      "recall_mean": 0.8958333333333333,
+      "recall_std": 0.04930066485916347,
+      "weighted_error_cost_mean": 83.4,
+      "weighted_error_cost_std": 7.28285658241325
+    },
+    {
+      "balanced_accuracy_mean": 0.6946428571428571,
+      "balanced_accuracy_std": 0.052833877870109534,
+      "f1_mean": 0.5798692670066716,
+      "f1_std": 0.05263254053058497,
+      "folds": 5,
+      "model_name": "cost_sensitive_logistic_regression",
+      "precision_mean": 0.44752673684672295,
+      "precision_std": 0.03811018017776058,
+      "rank": 2,
+      "recall_mean": 0.825,
+      "recall_std": 0.09090593428863095,
+      "weighted_error_cost_mean": 90.8,
+      "weighted_error_cost_std": 23.181026724457222
+    },
+    {
+      "balanced_accuracy_mean": 0.6985119047619047,
+      "balanced_accuracy_std": 0.04619906645698156,
+      "f1_mean": 0.5820717325847686,
+      "f1_std": 0.05405606382545064,
+      "folds": 5,
+      "model_name": "cost_sensitive_hist_gradient_boosting",
+      "precision_mean": 0.5036002530044275,
+      "precision_std": 0.053420491393349846,
+      "rank": 3,
+      "recall_mean": 0.6916666666666667,
+      "recall_std": 0.0637377439199098,
+      "weighted_error_cost_mean": 107.0,
+      "weighted_error_cost_std": 17.977764043395386
+    },
+    {
+      "balanced_accuracy_mean": 0.6705357142857142,
+      "balanced_accuracy_std": 0.012856316110985212,
+      "f1_mean": 0.5325728490260924,
+      "f1_std": 0.02201560775959959,
+      "folds": 5,
+      "model_name": "logistic_regression",
+      "precision_mean": 0.5953742813857591,
+      "precision_std": 0.050240454370810594,
+      "rank": 4,
+      "recall_mean": 0.4875,
+      "recall_std": 0.04677071733467426,
+      "weighted_error_cost_mean": 139.4,
+      "weighted_error_cost_std": 7.657675887630659
+    }
+  ],
+  "dataset_name": "UCI South German Credit",
+  "dataset_sha256": "0b40d40eb7321693d559e247a556f88a6cc8df8489c3cb2ae084db7592584551",
+  "dependency_versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.0"
+  },
+  "false_negative_cost": 5,
+  "false_positive_cost": 1,
+  "final_holdout_fraction": 0.2,
+  "python_version": "3.14.7",
+  "random_state": 42,
+  "ranking_rule": "lowest mean weighted error cost; highest mean balanced accuracy; lexicographic model name",
+  "schema_version": "1.0"
+}

@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 from trustlens.data import CreditDataset
 from trustlens.evaluation import ClassificationMetrics, evaluate_predictions
 
-
 TEST_SIZE = 0.20
 RANDOM_STATE = 42
 
@@ -25,4 +24,3 @@ def evaluate_majority_baseline(dataset: CreditDataset) -> ClassificationMetrics:
     model.fit(features_train, target_train)
     predictions = model.predict(features_test)
     return evaluate_predictions(target_test.to_numpy(), predictions)
-

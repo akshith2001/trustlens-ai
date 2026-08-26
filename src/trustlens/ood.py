@@ -66,9 +66,7 @@ def evaluate_ood_detector(
     synthetic_extremes = normal_holdout.copy()
     synthetic_extremes["duration_months"] += 36
     synthetic_extremes["credit_amount"] *= 4
-    synthetic_flags = flag_ood_records(
-        scaler, detector, synthetic_extremes
-    )
+    synthetic_flags = flag_ood_records(scaler, detector, synthetic_extremes)
 
     return OODResult(
         normal_holdout_flag_rate=float(normal_flags.mean()),

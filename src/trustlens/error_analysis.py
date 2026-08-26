@@ -43,7 +43,9 @@ def find_error_slices(
     for feature in features.columns:
         if feature in excluded_features:
             continue
-        groups = _groups_for_feature(features[feature], numeric=feature in numeric_features)
+        groups = _groups_for_feature(
+            features[feature], numeric=feature in numeric_features
+        )
         for group_name in groups.dropna().unique():
             mask = (groups == group_name).to_numpy()
             positive_mask = mask & (actual_array == 1)
@@ -54,18 +56,36 @@ def find_error_slices(
             if positive_support >= minimum_class_support:
                 errors = int((positive_mask & (predicted_array == 0)).sum())
                 false_negative_slices.append(
-                    ErrorSlice(feature, str(group_name), positive_support, errors, errors / positive_support)
+                    ErrorSlice(
+                        feature,
+                        str(group_name),
+                        positive_support,
+                        errors,
+                        errors / positive_support,
+                    )
                 )
             if negative_support >= minimum_class_support:
                 errors = int((negative_mask & (predicted_array == 1)).sum())
                 false_positive_slices.append(
-                    ErrorSlice(feature, str(group_name), negative_support, errors, errors / negative_support)
+                    ErrorSlice(
+                        feature,
+                        str(group_name),
+                        negative_support,
+                        errors,
+                        errors / negative_support,
+                    )
                 )
 
-    ranking = lambda item: (item.error_rate, item.class_support, item.errors)
+    def ranking(item: ErrorSlice) -> tuple[float, int, int]:
+        return item.error_rate, item.class_support, item.errors
+
     return {
-        "highest_false_negative_rate": sorted(false_negative_slices, key=ranking, reverse=True)[:limit],
-        "highest_false_positive_rate": sorted(false_positive_slices, key=ranking, reverse=True)[:limit],
+        "highest_false_negative_rate": sorted(
+            false_negative_slices, key=ranking, reverse=True
+        )[:limit],
+        "highest_false_positive_rate": sorted(
+            false_positive_slices, key=ranking, reverse=True
+        )[:limit],
     }
 
 
