@@ -38,7 +38,7 @@ trustlens-external-validation = "trustlens.external_validation:main"
 [project.optional-dependencies]
 dev = [
     "build>=1.5",
-    "httpx>=0.28",
+    "httpx>=0.28.1",
     "pip-audit>=2.10.1",
     "pytest>=8.4",
     "pytest-cov>=7.1",
