@@ -1,5 +1,19 @@
 # Benchmark protocol
 
+## Evidence tiers
+
+TrustLens separates three evidence tiers to prevent benchmark overclaiming:
+
+1. The locked historical credit holdout supports one documented internal
+   case-study estimate.
+2. Controlled synthetic datasets test behaviour under known structures and
+   covariate shifts.
+3. Packaged public reference datasets test the evaluation machinery across real
+   feature distributions and model families.
+
+Tier 3 is cross-domain reference validation, not external credit-domain
+validation. No tier authorises operational decisions.
+
 ## Purpose
 
 The TrustLens benchmark separates three kinds of evidence that must not be

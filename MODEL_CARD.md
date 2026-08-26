@@ -1,5 +1,9 @@
 # TrustLens AI model card
 
+> Release 0.3.0 adds a cross-domain public reference benchmark. Those results
+> validate evaluation mechanics only; they do not extend the credit model's
+> intended use or establish clinical or lending validity.
+
 ## Model details
 
 TrustLens AI's first case study is a human-governed binary classification

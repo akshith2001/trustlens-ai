@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "trustlens-ai"
-version = "0.2.0"
+version = "0.3.0"
 description = "Human-governed reliability and explainability auditing for AI systems"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -29,6 +29,7 @@ dependencies = [
 [project.scripts]
 trustlens-benchmark = "trustlens.benchmark:main"
 trustlens-benchmark-suite = "trustlens.benchmark_suite:main"
+trustlens-reference-benchmark = "trustlens.reference_benchmark:main"
 
 [project.optional-dependencies]
 dev = [

@@ -1,0 +1,16 @@
+name: Bug report
+description: Report a reproducible defect in TrustLens
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: Reproduction
+      description: Include the smallest reproducible example and environment details.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected and actual behaviour
+    validations:
+      required: true

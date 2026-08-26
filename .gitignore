@@ -3,12 +3,15 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .test-tmp*/
+.test-v3-*/
 .coverage
 htmlcov/
 data/raw/
 artifacts/
 build/
+dist/
 .audit-cache/
+.audit-cache-v3/
 .env
 .vscode/
 *.egg-info/

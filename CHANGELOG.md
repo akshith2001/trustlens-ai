@@ -2,6 +2,26 @@
 
 All notable research-software changes are documented here.
 
+## 0.3.0 - 2026-08-26
+
+### Added
+
+- Cross-domain public reference benchmark using two packaged, real datasets.
+- Four-model comparison with discrimination, calibration, shift and proxy-slice
+  diagnostics.
+- Reproducible JSON and Markdown reference-benchmark artifacts.
+- Container deployment, health check, Dependabot and contribution templates.
+
+### Clarified
+
+- Reference results validate benchmark mechanics across domains; they are not
+  external credit-domain validation or evidence for operational use.
+- Proxy feature slices are diagnostics, not protected-attribute fairness audits.
+
+### Preserved
+
+- Existing locked final-test metrics, uncertainty and error-analysis artifacts.
+
 ## 0.2.0 - 2026-08-26
 
 ### Added

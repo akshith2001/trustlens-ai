@@ -1,0 +1,96 @@
+{
+  "folds": 5,
+  "random_state": 42,
+  "results": [
+    {
+      "balanced_accuracy": 0.9674964325,
+      "brier_score": 0.0200453138,
+      "dataset": "wisconsin_breast_cancer",
+      "features": 30,
+      "model": "logistic_regression",
+      "proxy_group_recall_gap": 0.0333333333,
+      "records": 569,
+      "roc_auc": 0.9946884414,
+      "shifted_balanced_accuracy_delta": -0.0374561916
+    },
+    {
+      "balanced_accuracy": 0.9679390624,
+      "brier_score": 0.0241136519,
+      "dataset": "wisconsin_breast_cancer",
+      "features": 30,
+      "model": "calibrated_logistic_regression",
+      "proxy_group_recall_gap": 0.0111111111,
+      "records": 569,
+      "roc_auc": 0.9950451879,
+      "shifted_balanced_accuracy_delta": -0.0202978972
+    },
+    {
+      "balanced_accuracy": 0.949216479,
+      "brier_score": 0.0351264241,
+      "dataset": "wisconsin_breast_cancer",
+      "features": 30,
+      "model": "random_forest",
+      "proxy_group_recall_gap": 0.1073657928,
+      "records": 569,
+      "roc_auc": 0.9893967021,
+      "shifted_balanced_accuracy_delta": 0.0109521028
+    },
+    {
+      "balanced_accuracy": 0.9609362613,
+      "brier_score": 0.0294415439,
+      "dataset": "wisconsin_breast_cancer",
+      "features": 30,
+      "model": "histogram_gradient_boosting",
+      "proxy_group_recall_gap": 0.0518102372,
+      "records": 569,
+      "roc_auc": 0.9920590878,
+      "shifted_balanced_accuracy_delta": -0.0140186916
+    },
+    {
+      "balanced_accuracy": 0.9957983193,
+      "brier_score": 0.0105459166,
+      "dataset": "wine_class_0_vs_rest",
+      "features": 13,
+      "model": "logistic_regression",
+      "proxy_group_recall_gap": 0.0,
+      "records": 178,
+      "roc_auc": 0.9997151403,
+      "shifted_balanced_accuracy_delta": 0.0
+    },
+    {
+      "balanced_accuracy": 0.9661016949,
+      "brier_score": 0.0242074228,
+      "dataset": "wine_class_0_vs_rest",
+      "features": 13,
+      "model": "calibrated_logistic_regression",
+      "proxy_group_recall_gap": 0.0701754386,
+      "records": 178,
+      "roc_auc": 0.9992878507,
+      "shifted_balanced_accuracy_delta": 0.0277777778
+    },
+    {
+      "balanced_accuracy": 0.9703745905,
+      "brier_score": 0.0231531852,
+      "dataset": "wine_class_0_vs_rest",
+      "features": 13,
+      "model": "random_forest",
+      "proxy_group_recall_gap": 0.4649122807,
+      "records": 178,
+      "roc_auc": 0.9985757015,
+      "shifted_balanced_accuracy_delta": -0.0833333333
+    },
+    {
+      "balanced_accuracy": 0.9534966529,
+      "brier_score": 0.0335584115,
+      "dataset": "wine_class_0_vs_rest",
+      "features": 13,
+      "model": "histogram_gradient_boosting",
+      "proxy_group_recall_gap": 0.4473684211,
+      "records": 178,
+      "roc_auc": 0.995157385,
+      "shifted_balanced_accuracy_delta": -0.0833333333
+    }
+  ],
+  "schema_version": "1.0",
+  "scope": "Cross-domain public reference benchmark of evaluation machinery; not external credit validation or evidence for real-world decisions."
+}

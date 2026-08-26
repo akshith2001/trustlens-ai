@@ -30,7 +30,7 @@ jobs:
         run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
 
       - name: Run automated tests
-        run: python -m pytest --cov=trustlens --cov-report=term-missing --cov-fail-under=70
+        run: python -m pytest --cov=trustlens --cov-report=term-missing --cov-fail-under=75
 
       - name: Check code quality
         run: >-
@@ -48,3 +48,14 @@ jobs:
           trustlens-benchmark-suite --folds 2 --resamples 100
           --output controlled-suite-smoke-test.json
           --report controlled-suite-smoke-test.md
+
+      - name: Verify public reference benchmark
+        run: >-
+          trustlens-reference-benchmark --folds 2
+          --output reference-benchmark-smoke-test.json
+          --report reference-benchmark-smoke-test.md
+
+      - name: Verify locked evidence is unchanged
+        run: >-
+          git diff --exit-code -- results/final_test_metrics.json
+          results/final_test_uncertainty.json results/error_analysis.json

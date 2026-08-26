@@ -2,7 +2,7 @@
 
 [![Tests](https://github.com/akshith2001/trustlens-ai/actions/workflows/tests.yml/badge.svg)](https://github.com/akshith2001/trustlens-ai/actions/workflows/tests.yml)
 
-Version 0.2.0 · Python 3.11+
+Version 0.3.0 · Python 3.11+
 
 **Live research dashboard:**
 [trustlens-governance-ai.streamlit.app](https://trustlens-governance-ai.streamlit.app/)
@@ -72,6 +72,37 @@ and shifted conditions without making claims about real people or decisions.
 The complete predeclared methodology and interpretation boundary are documented
 in [`docs/benchmark_protocol.md`](docs/benchmark_protocol.md).
 
+## Public reference benchmark
+
+Version 0.3.0 tests the evaluation machinery on two real, packaged public
+datasets and four deterministic model families: logistic regression, calibrated
+logistic regression, random forest and histogram gradient boosting. It reports
+balanced accuracy, ROC AUC, Brier score, controlled-noise degradation and a
+proxy-slice recall gap.
+
+```bash
+trustlens-reference-benchmark
+```
+
+See [`reports/Reference_Benchmark_Report.md`](reports/Reference_Benchmark_Report.md)
+and [`results/reference_benchmark.json`](results/reference_benchmark.json).
+These cross-domain datasets check reproducibility and generality of the
+benchmark code. They are **not** external credit validation, a clinical study,
+or evidence that any model is safe for real decisions.
+
+## Run locally or in a container
+
+```bash
+python -m pip install -e ".[dev]"
+pytest
+streamlit run app.py
+```
+
+```bash
+docker build -t trustlens-ai .
+docker run --rm -p 8501:8501 trustlens-ai
+```
+
 ## Governance audit records
 
 The `trustlens.audit` module creates privacy-aware JSON Lines records that store
@@ -92,15 +123,14 @@ recorded in [`CHANGELOG.md`](CHANGELOG.md).
 This project is an educational research prototype. It must not be used to make
 real lending, employment, legal, medical, or security decisions.
 
-## Planned modules
+## Capability roadmap
 
-- Tabular credit-risk classification and evaluation
-- Confidence calibration and uncertainty-based rejection
-- Drift and out-of-distribution detection
-- Fairness and explainability analysis
-- Evidence-grounded local LLM summaries
-- Human review and versioned audit records
-- Computer-vision anomaly detection
+- Completed: tabular evaluation, calibration, uncertainty, drift/OOD screening,
+  subgroup diagnostics, explainability, human review and chained audit records.
+- Completed: synthetic controlled benchmarks and cross-domain public reference
+  benchmarks.
+- Next: independently governed credit-domain validation, experiment registry,
+  monitored API deployment and computer-vision anomaly detection.
 
 ## Dataset
 
