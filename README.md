@@ -2,7 +2,7 @@
 
 [![Tests](https://github.com/akshith2001/trustlens-ai/actions/workflows/tests.yml/badge.svg)](https://github.com/akshith2001/trustlens-ai/actions/workflows/tests.yml)
 
-Version 0.3.0 · Python 3.11+
+Version 0.3.1 · Python 3.11+
 
 **Live research dashboard:**
 [trustlens-governance-ai.streamlit.app](https://trustlens-governance-ai.streamlit.app/)

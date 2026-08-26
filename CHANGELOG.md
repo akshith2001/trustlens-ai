@@ -2,6 +2,14 @@
 
 All notable research-software changes are documented here.
 
+## 0.3.1 - 2026-08-26
+
+### Security and CI
+
+- Require setuptools 83 or newer to resolve PYSEC-2026-3447 in CI.
+- Upgrade checkout, Python setup and CodeQL actions to Node 24-compatible major
+  versions.
+
 ## 0.3.0 - 2026-08-26
 
 ### Added
