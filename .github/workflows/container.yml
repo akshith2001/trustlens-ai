@@ -1,0 +1,59 @@
+name: Container
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Build API image
+        run: docker build --tag trustlens-ai:ci .
+
+      - name: Run API container
+        run: >-
+          docker run --detach --rm --name trustlens-api
+          --publish 8501:8501 --env TRUSTLENS_API_KEY=ci-only
+          trustlens-ai:ci
+
+      - name: Verify health endpoint
+        run: |
+          for attempt in {1..20}; do
+            curl --fail --silent http://localhost:8501/health && exit 0
+            sleep 1
+          done
+          docker logs trustlens-api
+          exit 1
+
+      - name: Stop API container
+        if: always()
+        run: docker stop trustlens-api || true
+
+  sbom:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Generate CycloneDX SBOM
+        run: >-
+          python -m pip install --upgrade pip "setuptools>=83" &&
+          python -m pip install -e ".[dev]" &&
+          pip-audit --format cyclonedx-json --output sbom.cdx.json
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v6
+        with:
+          name: trustlens-sbom
+          path: sbom.cdx.json

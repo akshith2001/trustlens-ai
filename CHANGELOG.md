@@ -2,6 +2,30 @@
 
 All notable research-software changes are documented here.
 
+## 0.4.0 - 2026-08-26
+
+### Added
+
+- Independent five-fold credit-domain validation on the CC0 FICO HELOC cleaned
+  dataset, with reproducible JSON and Markdown evidence.
+- API-key-authenticated FastAPI governance, monitoring and registry endpoints.
+- Checksum-backed model registry, append-only experiment ledger and bounded
+  aggregate runtime monitoring with drift/OOD alert rules.
+- Hardened Docker Compose deployment and container build/run/SBOM CI workflow.
+
+### Changed
+
+- Raise enforced statement coverage from 75% to 90%.
+- Consolidate current dependency updates, including GitHub Actions and developer
+  tooling major versions.
+
+### Limitations
+
+- The independent dataset's collection period is undocumented, so the result is
+  not presented as contemporary or prospective validation.
+- Monitoring infrastructure is implemented and tested but has no live-traffic
+  evidence or external alert-delivery integration.
+
 ## 0.3.1 - 2026-08-26
 
 ### Security and CI

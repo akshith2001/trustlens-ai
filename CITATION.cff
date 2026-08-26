@@ -2,12 +2,13 @@ cff-version: 1.2.0
 message: "If you use TrustLens AI, please cite this software."
 title: "TrustLens AI"
 type: software
-version: 0.2.0
+version: 0.4.0
 date-released: 2026-08-26
 authors:
   - family-names: Moharampudi
     given-names: Akshith
 repository-code: "https://github.com/akshith2001/trustlens-ai"
+license: Apache-2.0
 url: "https://trustlens-governance-ai.streamlit.app/"
 abstract: >-
   Human-governed machine-learning research prototype for calibrated risk

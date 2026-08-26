@@ -1,8 +1,8 @@
 # TrustLens AI model card
 
-> Release 0.3.0 adds a cross-domain public reference benchmark. Those results
-> validate evaluation mechanics only; they do not extend the credit model's
-> intended use or establish clinical or lending validity.
+> Release 0.4.0 adds independent credit-domain reference validation and an
+> authenticated governance API. Neither extends the model's intended use or
+> establishes that it is suitable for lending decisions.
 
 ## Model details
 
@@ -109,7 +109,9 @@ record. Neither method establishes causation, recourse, or financial advice.
 - Generalisation gap between development and the locked test result.
 - Gender fairness is not assessable from the available source field.
 - Subgroup estimates can be unstable, especially for small groups.
-- No external validation, prospective study or live monitoring evidence.
+- Independent FICO HELOC validation exists, but its source metadata does not
+  document the collection period; there is no prospective or contemporary
+  validation and no evidence from live production traffic.
 - No evidence that the chosen error-cost ratio reflects stakeholder values.
 
 ## Reproducibility

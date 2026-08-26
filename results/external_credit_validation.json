@@ -1,0 +1,29 @@
+{
+  "collection_period_status": "not_documented_in_source_metadata",
+  "dataset": "FICO-HELOC-cleaned",
+  "features": 23,
+  "folds": 5,
+  "license": "CC0-1.0",
+  "openml_data_id": 45554,
+  "positive_class": "Bad",
+  "positive_rate": 0.5203120251,
+  "random_state": 42,
+  "records": 9871,
+  "results": [
+    {
+      "balanced_accuracy": 0.7297155388,
+      "brier_score": 0.1818553256,
+      "model": "logistic_regression",
+      "roc_auc": 0.8004924141
+    },
+    {
+      "balanced_accuracy": 0.7311577469,
+      "brier_score": 0.1816266857,
+      "model": "random_forest",
+      "roc_auc": 0.8012681875
+    }
+  ],
+  "schema_fingerprint_sha256": "94a6e111da3d28029c9ae685288b0c481264faa218ba86bac633932f42396223",
+  "schema_version": "1.0",
+  "scope": "Independent credit-domain reference validation. It is not a temporal validation, a replication of the historical study, or evidence for operational credit decisions."
+}

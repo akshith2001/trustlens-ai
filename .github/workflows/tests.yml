@@ -32,7 +32,7 @@ jobs:
           python -m pip install -e ".[dev]"
 
       - name: Run automated tests
-        run: python -m pytest --cov=trustlens --cov-report=term-missing --cov-fail-under=75
+        run: python -m pytest --cov=trustlens --cov-report=term-missing --cov-fail-under=90
 
       - name: Check code quality
         run: >-

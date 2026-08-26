@@ -2,7 +2,7 @@
 
 [![Tests](https://github.com/akshith2001/trustlens-ai/actions/workflows/tests.yml/badge.svg)](https://github.com/akshith2001/trustlens-ai/actions/workflows/tests.yml)
 
-Version 0.3.1 · Python 3.11+
+Version 0.4.0 · Python 3.11+
 
 **Live research dashboard:**
 [trustlens-governance-ai.streamlit.app](https://trustlens-governance-ai.streamlit.app/)
@@ -90,6 +90,31 @@ These cross-domain datasets check reproducibility and generality of the
 benchmark code. They are **not** external credit validation, a clinical study,
 or evidence that any model is safe for real decisions.
 
+## Independent credit-domain validation
+
+Version 0.4.0 adds a deterministic five-fold validation on the independent,
+CC0-licensed FICO HELOC cleaned dataset (OpenML data ID 45554): 9,871 records
+and 23 credit-domain features. Logistic regression and random forest both
+achieve approximately 0.73 balanced accuracy and 0.80 ROC AUC. Reproduce it
+with `trustlens-external-validation`; see
+[`reports/External_Credit_Validation.md`](reports/External_Credit_Validation.md).
+The source metadata does not document a collection period, so this is not
+claimed as contemporary or temporal validation and does not justify lending use.
+
+## Authenticated governance API and monitoring
+
+The FastAPI service exposes `/health` publicly and protects the governance,
+monitoring and model-registry routes with a constant-time `X-API-Key` check.
+It fails closed when `TRUSTLENS_API_KEY` is unset. The bounded monitor stores
+only aggregate counts and raises drift/OOD-rate alerts; it is an operational
+foundation, not evidence from live traffic. The file-backed registry records
+artifact checksums, metadata and append-only experiment events.
+
+```bash
+set TRUSTLENS_API_KEY=replace-with-a-secret
+uvicorn trustlens.api:app --host 0.0.0.0 --port 8501
+```
+
 ## Run locally or in a container
 
 ```bash
@@ -99,8 +124,8 @@ streamlit run app.py
 ```
 
 ```bash
-docker build -t trustlens-ai .
-docker run --rm -p 8501:8501 trustlens-ai
+set TRUSTLENS_API_KEY=replace-with-a-secret
+docker compose up --build
 ```
 
 ## Governance audit records
@@ -116,7 +141,8 @@ or privacy compliance system.
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for research-integrity and development
 requirements, [`SECURITY.md`](SECURITY.md) for private vulnerability reporting,
 and [`CITATION.cff`](CITATION.cff) for citation metadata. Release changes are
-recorded in [`CHANGELOG.md`](CHANGELOG.md).
+recorded in [`CHANGELOG.md`](CHANGELOG.md). TrustLens AI is available under the
+[`Apache License 2.0`](LICENSE).
 
 ## Safety and scope
 
@@ -127,10 +153,12 @@ real lending, employment, legal, medical, or security decisions.
 
 - Completed: tabular evaluation, calibration, uncertainty, drift/OOD screening,
   subgroup diagnostics, explainability, human review and chained audit records.
-- Completed: synthetic controlled benchmarks and cross-domain public reference
-  benchmarks.
-- Next: independently governed credit-domain validation, experiment registry,
-  monitored API deployment and computer-vision anomaly detection.
+- Completed: synthetic controlled benchmarks, cross-domain public references,
+  and independent credit-domain reference validation.
+- Completed: authenticated governance API, checksum-backed model registry,
+  append-only experiment ledger, aggregate monitoring and alert evaluation.
+- Next: prospective contemporary credit validation, external telemetry/alert
+  delivery, managed identity/secrets and computer-vision anomaly detection.
 
 ## Dataset
 
