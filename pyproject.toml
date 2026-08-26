@@ -23,7 +23,7 @@ dependencies = [
     "numpy>=2.3",
     "pandas>=2.3",
     "scikit-learn>=1.7",
-    "streamlit>=1.52",
+    "streamlit>=1.62.0",
 ]
 
 [project.scripts]
