@@ -33,7 +33,7 @@ trustlens-reference-benchmark = "trustlens.reference_benchmark:main"
 
 [project.optional-dependencies]
 dev = [
-    "build>=1.3",
+    "build>=1.5.0",
     "pip-audit>=2.9",
     "pytest>=8.4",
     "pytest-cov>=6.2",
