@@ -1,6 +1,10 @@
 # TrustLens AI
 
 [![Tests](https://github.com/akshith2001/trustlens-ai/actions/workflows/tests.yml/badge.svg)](https://github.com/akshith2001/trustlens-ai/actions/workflows/tests.yml)
+[![CodeQL](https://github.com/akshith2001/trustlens-ai/actions/workflows/codeql.yml/badge.svg)](https://github.com/akshith2001/trustlens-ai/actions/workflows/codeql.yml)
+[![Container](https://github.com/akshith2001/trustlens-ai/actions/workflows/container.yml/badge.svg)](https://github.com/akshith2001/trustlens-ai/actions/workflows/container.yml)
+[![License](https://img.shields.io/github/license/akshith2001/trustlens-ai)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
 
 Version 0.4.0 · Python 3.11+
 
@@ -17,6 +21,40 @@ TrustLens AI is a research prototype for evaluating whether machine-learning
 predictions are accurate, calibrated, explainable, and suitable for human
 review. The first case study uses historical credit-risk data; a later module
 will evaluate computer-vision anomaly detection.
+
+## At a glance
+
+| Evidence | Published result |
+|---|---|
+| Independent credit-domain validation | 9,871 FICO HELOC records; approximately 0.73 balanced accuracy and 0.80 ROC AUC |
+| Locked historical holdout | 0.833 higher-risk recall; weighted error cost reduced from 300 to 123, with 73 false positives |
+| Verification | 63 automated tests; 90.08% statement coverage; Tests, CodeQL and container CI |
+| Governance | Authenticated API, governed thresholds, drift/OOD screening, human-review rules and chained audit records |
+| Reproducibility | Versioned benchmark artifacts, dataset checksums, model registry, experiment ledger, SBOM and citation metadata |
+| Intended use | Educational research only; not for real lending or other high-stakes decisions |
+
+## Governance architecture
+
+```mermaid
+flowchart LR
+    A[Validated data] --> B[Locked evaluation]
+    B --> C[Calibrated probability]
+    C --> D{Governance engine}
+    E[Population drift] --> D
+    F[Individual OOD] --> D
+    G[Fairness and explanations] -. audit evidence .-> D
+    D -->|Supported| H[Continue and monitor]
+    D -->|Uncertain or warning| I[Human review]
+    D -->|OOD or material drift| J[Pause and investigate]
+    H --> K[Aggregate monitoring]
+    I --> L[Privacy-aware audit chain]
+    J --> L
+```
+
+The predictive model does not make an autonomous decision. Reliability signals
+and locked policies determine whether processing may continue, requires human
+review, or must pause. See [`docs/architecture.md`](docs/architecture.md) for
+the complete methodology and interpretation boundaries.
 
 ## Research question
 
@@ -172,4 +210,5 @@ will be treated as audit findings rather than hidden.
 The loader verifies the downloaded archive against its locked SHA-256 digest
 before parsing it. This prevents an upstream change or corrupted cache from
 silently altering the published experiment.
+
 
