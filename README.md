@@ -17,6 +17,9 @@ Version 0.4.0 · Python 3.11+
 **One-page research summary:**
 [TrustLens AI supervisor brief](reports/TrustLens_AI_One_Page_Research_Summary.pdf)
 
+**Research agenda:**
+[`Evidence-Constrained Credit-Risk Decision Support Under Uncertainty`](docs/research_agenda.md)
+
 TrustLens AI is a research prototype for evaluating whether machine-learning
 predictions are accurate, calibrated, explainable, and suitable for human
 review. The first case study uses historical credit-risk data; a later module
@@ -61,6 +64,21 @@ the complete methodology and interpretation boundaries.
 Can a human-governed auditing layer combining cost-sensitive evaluation,
 uncertainty estimation, drift detection, and explainability identify unreliable
 machine-learning outputs more effectively than confidence scores alone?
+
+## Research contribution
+
+TrustLens is positioned as more than a prediction benchmark. Its central
+research contribution is an **evidence contract**: every material model output
+should be accompanied by its provenance, uncertainty, limitation, permitted
+interpretation and required human action. The proposed research tests whether
+this structure helps people recognise when a prediction may be used, deferred
+or rejected more reliably than a score or explanation alone.
+
+The next study phase focuses on contemporary external validation, robustness
+under population shift and a controlled comparison of three interfaces: score
+only, score plus explanation, and the complete evidence contract. See the
+[`research agenda`](docs/research_agenda.md) for the questions, hypotheses,
+evaluation plan and publication boundaries.
 
 ## Current status
 
@@ -210,5 +228,4 @@ will be treated as audit findings rather than hidden.
 The loader verifies the downloaded archive against its locked SHA-256 digest
 before parsing it. This prevents an upstream change or corrupted cache from
 silently altering the published experiment.
-
 
