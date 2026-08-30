@@ -20,6 +20,9 @@ Version 0.4.0 · Python 3.11+
 **Research agenda:**
 [`Evidence-Constrained Credit-Risk Decision Support Under Uncertainty`](docs/research_agenda.md)
 
+**Human-factors pilot design:**
+[`Three-arm evidence-contract study`](docs/pilot_study.md)
+
 TrustLens AI is a research prototype for evaluating whether machine-learning
 predictions are accurate, calibrated, explainable, and suitable for human
 review. The first case study uses historical credit-risk data; a later module
@@ -33,6 +36,7 @@ will evaluate computer-vision anomaly detection.
 | Locked historical holdout | 0.833 higher-risk recall; weighted error cost reduced from 300 to 123, with 73 false positives |
 | Verification | 63 automated tests; 90.08% statement coverage; Tests, CodeQL and container CI |
 | Governance | Authenticated API, governed thresholds, drift/OOD screening, human-review rules and chained audit records |
+| Human factors | 15 synthetic vignettes and a preregistered three-arm pilot design; study prepared, not yet run |
 | Reproducibility | Versioned benchmark artifacts, dataset checksums, model registry, experiment ledger, SBOM and citation metadata |
 | Intended use | Educational research only; not for real lending or other high-stakes decisions |
 
@@ -79,6 +83,13 @@ under population shift and a controlled comparison of three interfaces: score
 only, score plus explanation, and the complete evidence contract. See the
 [`research agenda`](docs/research_agenda.md) for the questions, hypotheses,
 evaluation plan and publication boundaries.
+
+The controlled human-factors study is now specified through 15 fully synthetic
+vignettes covering reliable lower risk, reliable higher risk, borderline
+uncertainty, drift/OOD and fairness/data limitations. The study materials are
+prepared for a small independent usability pilot; no participants have yet been
+recruited and no effectiveness claim is made. See the
+[`pilot-study specification`](docs/pilot_study.md).
 
 ## Current status
 
@@ -214,7 +225,8 @@ real lending, employment, legal, medical, or security decisions.
 - Completed: authenticated governance API, checksum-backed model registry,
   append-only experiment ledger, aggregate monitoring and alert evaluation.
 - Next: prospective contemporary credit validation, external telemetry/alert
-  delivery, managed identity/secrets and computer-vision anomaly detection.
+  delivery, managed identity/secrets, an independently reviewed human-factors
+  pilot and computer-vision anomaly detection.
 
 ## Dataset
 
