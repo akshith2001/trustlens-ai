@@ -6,6 +6,7 @@ __pycache__/
 .test-tmp*/
 .test-v3-*/
 .test-v4-*/
+.test-v5-*/
 .coverage
 htmlcov/
 data/raw/

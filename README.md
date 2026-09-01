@@ -36,7 +36,7 @@ will evaluate computer-vision anomaly detection.
 |---|---|
 | Independent credit-domain validation | 9,871 FICO HELOC records; approximately 0.73 balanced accuracy and 0.80 ROC AUC |
 | Locked historical holdout | 0.833 higher-risk recall; weighted error cost reduced from 300 to 123, with 73 false positives |
-| Verification | 63 automated tests; 90.08% statement coverage; Tests, CodeQL and container CI |
+| Verification | 76 automated tests; 90.01% statement coverage; Tests, CodeQL and container CI |
 | Governance | Authenticated API, governed thresholds, drift/OOD screening, human-review rules and chained audit records |
 | Human factors | 15 synthetic vignettes and a preregistered three-arm pilot design; study prepared, not yet run |
 | Reproducibility | Versioned benchmark artifacts, dataset checksums, model registry, experiment ledger, SBOM and citation metadata |
@@ -92,6 +92,17 @@ uncertainty, drift/OOD and fairness/data limitations. The study materials are
 prepared for a small independent usability pilot; no participants have yet been
 recruited and no effectiveness claim is made. See the
 [`pilot-study specification`](docs/pilot_study.md).
+
+The 15 vignettes are versioned as a machine-readable instrument with a locked
+scoring key and reproducible score-only, explanation and evidence-contract
+rendering rules:
+
+```bash
+trustlens-pilot-materials
+```
+
+The validator prevents the materials from being labelled as a completed study.
+No participant responses or effectiveness results exist yet.
 
 ## Current status
 

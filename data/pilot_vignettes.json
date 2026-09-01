@@ -1,0 +1,96 @@
+{
+  "status": "synthetic_study_materials_not_yet_run",
+  "threshold": 0.20,
+  "vignettes": [
+    {
+      "id": "L01", "category": "reliable_lower_risk", "title": "Stable lower-risk signal A", "probability": 0.05, "drift_auc": 0.51, "is_out_of_distribution": false, "material_limitation": false,
+      "explanation": ["Repayment-history indicators support the lower-risk signal.", "No single feature determines the output."],
+      "evidence_contract": {"provenance": "Locked synthetic case generated from the supported schema.", "uncertainty": "Probability is well below the 0.20 threshold.", "limitations": "Historical patterns do not establish current ability to repay.", "permitted_interpretation": "Use only as a monitored workflow signal, never as an approval.", "required_action": "Continue the governed workflow with monitoring."},
+      "expected_action": "continue_with_monitoring"
+    },
+    {
+      "id": "L02", "category": "reliable_lower_risk", "title": "Stable lower-risk signal B", "probability": 0.08, "drift_auc": 0.55, "is_out_of_distribution": false, "material_limitation": false,
+      "explanation": ["Credit-duration and repayment indicators support the signal.", "The explanation is descriptive, not causal."],
+      "evidence_contract": {"provenance": "Locked synthetic case generated from the supported schema.", "uncertainty": "Probability remains outside the threshold uncertainty band.", "limitations": "Unobserved current circumstances may differ from historical data.", "permitted_interpretation": "Use only as a monitored workflow signal, never as an approval.", "required_action": "Continue the governed workflow with monitoring."},
+      "expected_action": "continue_with_monitoring"
+    },
+    {
+      "id": "L03", "category": "reliable_lower_risk", "title": "Stable lower-risk signal C", "probability": 0.12, "drift_auc": 0.57, "is_out_of_distribution": false, "material_limitation": false,
+      "explanation": ["Multiple supported attributes contribute to the lower-risk signal.", "Feature importance does not prove fairness."],
+      "evidence_contract": {"provenance": "Locked synthetic case generated from the supported schema.", "uncertainty": "Probability is below the uncertainty band around 0.20.", "limitations": "The model cannot verify future repayment.", "permitted_interpretation": "Use only as a monitored workflow signal, never as an approval.", "required_action": "Continue the governed workflow with monitoring."},
+      "expected_action": "continue_with_monitoring"
+    },
+    {
+      "id": "H01", "category": "reliable_higher_risk", "title": "Higher-risk warning A", "probability": 0.35, "drift_auc": 0.53, "is_out_of_distribution": false, "material_limitation": false,
+      "explanation": ["Repayment-history indicators increased the warning probability.", "The warning is not a rejection instruction."],
+      "evidence_contract": {"provenance": "Locked synthetic case generated from the supported schema.", "uncertainty": "Probability is above the governed threshold.", "limitations": "The score cannot determine individual circumstances.", "permitted_interpretation": "Treat as a warning requiring human assessment, not an adverse decision.", "required_action": "Require documented human review."},
+      "expected_action": "human_review_required"
+    },
+    {
+      "id": "H02", "category": "reliable_higher_risk", "title": "Higher-risk warning B", "probability": 0.58, "drift_auc": 0.56, "is_out_of_distribution": false, "material_limitation": false,
+      "explanation": ["Several historical risk indicators increased the score.", "The explanation does not establish causation."],
+      "evidence_contract": {"provenance": "Locked synthetic case generated from the supported schema.", "uncertainty": "Probability is materially above the threshold.", "limitations": "The label represents historical outcomes, not verified present facts.", "permitted_interpretation": "Treat as a warning requiring human assessment, not an adverse decision.", "required_action": "Require documented human review."},
+      "expected_action": "human_review_required"
+    },
+    {
+      "id": "H03", "category": "reliable_higher_risk", "title": "Higher-risk warning C", "probability": 0.82, "drift_auc": 0.58, "is_out_of_distribution": false, "material_limitation": false,
+      "explanation": ["The model found a strong historical higher-risk pattern.", "High confidence does not remove the requirement for review."],
+      "evidence_contract": {"provenance": "Locked synthetic case generated from the supported schema.", "uncertainty": "Probability is high but remains an estimate.", "limitations": "Model confidence is not evidence of current affordability.", "permitted_interpretation": "Treat as a warning requiring human assessment, not an adverse decision.", "required_action": "Require documented human review."},
+      "expected_action": "human_review_required"
+    },
+    {
+      "id": "B01", "category": "borderline_uncertainty", "title": "Borderline estimate A", "probability": 0.18, "drift_auc": 0.54, "is_out_of_distribution": false, "material_limitation": false,
+      "explanation": ["Small input changes could move the estimate across the threshold.", "No feature resolves the uncertainty."],
+      "evidence_contract": {"provenance": "Locked synthetic case generated from the supported schema.", "uncertainty": "Probability lies inside the ±0.05 uncertainty band.", "limitations": "The predicted class is unstable near the threshold.", "permitted_interpretation": "Do not treat the displayed class as settled.", "required_action": "Require documented human review."},
+      "expected_action": "human_review_required"
+    },
+    {
+      "id": "B02", "category": "borderline_uncertainty", "title": "Borderline estimate B", "probability": 0.20, "drift_auc": 0.52, "is_out_of_distribution": false, "material_limitation": false,
+      "explanation": ["The estimate is exactly at the locked threshold.", "The class assignment is policy-dependent."],
+      "evidence_contract": {"provenance": "Locked synthetic case generated from the supported schema.", "uncertainty": "Probability equals the governed threshold.", "limitations": "Threshold selection embeds an explicit error-cost judgement.", "permitted_interpretation": "Do not treat the displayed class as settled.", "required_action": "Require documented human review."},
+      "expected_action": "human_review_required"
+    },
+    {
+      "id": "B03", "category": "borderline_uncertainty", "title": "Borderline estimate C", "probability": 0.24, "drift_auc": 0.59, "is_out_of_distribution": false, "material_limitation": false,
+      "explanation": ["The estimate is only slightly above the threshold.", "Measurement variation could alter the class."],
+      "evidence_contract": {"provenance": "Locked synthetic case generated from the supported schema.", "uncertainty": "Probability lies inside the ±0.05 uncertainty band.", "limitations": "The warning is sensitive to small perturbations.", "permitted_interpretation": "Do not treat the displayed class as settled.", "required_action": "Require documented human review."},
+      "expected_action": "human_review_required"
+    },
+    {
+      "id": "D01", "category": "drift_or_ood", "title": "Population-shift warning A", "probability": 0.06, "drift_auc": 0.78, "is_out_of_distribution": false, "material_limitation": false,
+      "explanation": ["The individual score appears low.", "Population-level inputs differ materially from development data."],
+      "evidence_contract": {"provenance": "Synthetic shifted population case.", "uncertainty": "The score is not reliable under detected shift.", "limitations": "Drift AUC exceeds the locked 0.70 trigger.", "permitted_interpretation": "Do not rely on the individual probability while the system is shifted.", "required_action": "Pause processing and investigate the population shift."},
+      "expected_action": "pause_and_investigate"
+    },
+    {
+      "id": "D02", "category": "drift_or_ood", "title": "Population-shift warning B", "probability": 0.62, "drift_auc": 0.73, "is_out_of_distribution": true, "material_limitation": false,
+      "explanation": ["The score is above threshold.", "Both population shift and record-level support warnings are present."],
+      "evidence_contract": {"provenance": "Synthetic shifted and out-of-distribution case.", "uncertainty": "The displayed probability is outside validated support.", "limitations": "Drift AUC exceeds 0.70 and the record is OOD.", "permitted_interpretation": "Do not convert the score into an individual decision.", "required_action": "Pause processing and investigate before any review."},
+      "expected_action": "pause_and_investigate"
+    },
+    {
+      "id": "D03", "category": "drift_or_ood", "title": "Population-shift warning C", "probability": 0.19, "drift_auc": 0.81, "is_out_of_distribution": true, "material_limitation": false,
+      "explanation": ["The estimate is borderline.", "Strong population shift makes the score unsupported."],
+      "evidence_contract": {"provenance": "Synthetic shifted and out-of-distribution case.", "uncertainty": "Both threshold uncertainty and OOD warnings apply.", "limitations": "The supported data region does not cover this case.", "permitted_interpretation": "The score is diagnostic evidence only.", "required_action": "Pause processing and investigate the data pipeline."},
+      "expected_action": "pause_and_investigate"
+    },
+    {
+      "id": "F01", "category": "fairness_or_data_limitation", "title": "Unresolved proxy limitation A", "probability": 0.09, "drift_auc": 0.55, "is_out_of_distribution": false, "material_limitation": true,
+      "explanation": ["A location-related input materially influenced the score.", "The available audit cannot rule out proxy effects."],
+      "evidence_contract": {"provenance": "Synthetic case with an unresolved proxy-risk flag.", "uncertainty": "Predictive uncertainty is low but governance evidence is incomplete.", "limitations": "Protected-group audit labels are unavailable; fairness cannot be established.", "permitted_interpretation": "Do not treat apparent predictive clarity as evidence of fairness.", "required_action": "Pause and escalate the unresolved proxy limitation."},
+      "expected_action": "pause_and_investigate"
+    },
+    {
+      "id": "F02", "category": "fairness_or_data_limitation", "title": "Stale evidence limitation B", "probability": 0.47, "drift_auc": 0.57, "is_out_of_distribution": false, "material_limitation": true,
+      "explanation": ["Historical repayment indicators increased the score.", "Evidence freshness cannot be verified."],
+      "evidence_contract": {"provenance": "Synthetic case with unknown source freshness.", "uncertainty": "The model estimate is precise conditional on potentially stale inputs.", "limitations": "Current circumstances are not evidenced and data age is unknown.", "permitted_interpretation": "Do not treat old observations as verified current facts.", "required_action": "Pause and investigate provenance before interpretation."},
+      "expected_action": "pause_and_investigate"
+    },
+    {
+      "id": "F03", "category": "fairness_or_data_limitation", "title": "Missing audit evidence C", "probability": 0.76, "drift_auc": 0.60, "is_out_of_distribution": false, "material_limitation": true,
+      "explanation": ["The model produced a strong warning.", "The subgroup audit is incomplete for the represented population."],
+      "evidence_contract": {"provenance": "Synthetic case with incomplete subgroup audit evidence.", "uncertainty": "Model confidence does not resolve the audit gap.", "limitations": "Fairness and representativeness remain unknown.", "permitted_interpretation": "Do not use confidence as a substitute for governance evidence.", "required_action": "Pause and escalate for independent audit review."},
+      "expected_action": "pause_and_investigate"
+    }
+  ]
+}

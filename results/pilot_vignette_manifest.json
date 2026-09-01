@@ -1,0 +1,37 @@
+{
+  "status": "designed_not_run",
+  "vignette_count": 15,
+  "category_counts": {
+    "borderline_uncertainty": 3,
+    "drift_or_ood": 3,
+    "fairness_or_data_limitation": 3,
+    "reliable_higher_risk": 3,
+    "reliable_lower_risk": 3
+  },
+  "arms": {
+    "score": [
+      "id",
+      "predicted_class",
+      "probability",
+      "title"
+    ],
+    "explain": [
+      "explanation",
+      "id",
+      "predicted_class",
+      "probability",
+      "title"
+    ],
+    "contract": [
+      "evidence_contract",
+      "explanation",
+      "id",
+      "predicted_class",
+      "probability",
+      "title"
+    ]
+  },
+  "locked_threshold": 0.2,
+  "source_sha256": "73b51ccaf02a2b7909ee7ea06b9ff90db0edf898bf6e45c9bca5747d29c5ab61",
+  "publication_boundary": "No participant data have been collected and no effectiveness claim is supported."
+}

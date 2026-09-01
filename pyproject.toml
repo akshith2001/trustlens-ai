@@ -34,6 +34,7 @@ trustlens-benchmark = "trustlens.benchmark:main"
 trustlens-benchmark-suite = "trustlens.benchmark_suite:main"
 trustlens-reference-benchmark = "trustlens.reference_benchmark:main"
 trustlens-external-validation = "trustlens.external_validation:main"
+trustlens-pilot-materials = "trustlens.human_factors:main"
 
 [project.optional-dependencies]
 dev = [

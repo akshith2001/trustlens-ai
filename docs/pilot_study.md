@@ -45,6 +45,19 @@ The instrument contains 15 controlled cases: three in each category.
 4. Drift or out-of-distribution evidence — pause and investigate.
 5. Fairness or data-quality limitations — pause or escalate.
 
+The complete synthetic bank is now versioned in
+[`data/pilot_vignettes.json`](../data/pilot_vignettes.json). A validator checks
+that it contains exactly three cases per category, that every scoring key
+matches the locked governance policy and that the three experimental arms
+expose only their declared information. Reproduce the manifest with:
+
+```bash
+trustlens-pilot-materials
+```
+
+This command validates study materials; it does not simulate participants or
+create evidence that the evidence-contract interface is effective.
+
 The classification threshold is locked at `0.20`. “Continue” never means
 automatic approval. A higher-risk classification never means automatic
 rejection.
