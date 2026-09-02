@@ -23,6 +23,8 @@ Version 0.4.0 · Python 3.11+
 **Human-factors pilot design:**
 [`Three-arm evidence-contract study`](docs/pilot_study.md)
 
+Related work: this project's calibration and human-review governance approach is applied to real operational data in hospitality-sustainability-ai, and to climate-scenario uncertainty in ghg-scenario-model.
+
 TrustLens AI is a research prototype for evaluating whether machine-learning
 predictions are accurate, calibrated, explainable, and suitable for human
 review. The first case study uses historical credit-risk data; a later module
