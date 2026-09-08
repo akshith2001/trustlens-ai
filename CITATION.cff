@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use TrustLens AI, please cite this software."
-title: "TrustLens AI"
+title: "TrustLens AI: Human-Governed Machine Learning for Reliability-Aware Risk Classification"
 type: software
 version: 0.4.0
 date-released: 2026-08-26
@@ -10,12 +10,33 @@ authors:
 repository-code: "https://github.com/akshith2001/trustlens-ai"
 license: Apache-2.0
 url: "https://trustlens-governance-ai.streamlit.app/"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22664688"
+    description: "Zenodo preprint archive of the TrustLens AI research report"
 abstract: >-
   Human-governed machine-learning research prototype for calibrated risk
   modelling, drift detection, explainability, fairness diagnostics and review
   policies.
 keywords:
   - responsible AI
-  - model governance
-  - explainable AI
-  - machine learning
+  - machine learning governance
+  - probability calibration
+  - cost-sensitive classification
+  - drift detection
+  - out-of-distribution detection
+  - explainability
+  - human-in-the-loop review
+references:
+  - type: software
+    title: "Hospitality Sustainability AI"
+    authors:
+      - family-names: Moharampudi
+        given-names: Akshith
+    repository-code: "https://github.com/akshith2001/hospitality-sustainability-ai"
+  - type: software
+    title: "Cross-Sector Greenhouse Gas Scenario Model"
+    authors:
+      - family-names: Moharampudi
+        given-names: Akshith
+    repository-code: "https://github.com/akshith2001/ghg-scenario-model"

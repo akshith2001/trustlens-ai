@@ -5,6 +5,7 @@
 [![Container](https://github.com/akshith2001/trustlens-ai/actions/workflows/container.yml/badge.svg)](https://github.com/akshith2001/trustlens-ai/actions/workflows/container.yml)
 [![License](https://img.shields.io/github/license/akshith2001/trustlens-ai)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22664688.svg)](https://doi.org/10.5281/zenodo.22664688)
 
 Version 0.4.0 · Python 3.11+
 
@@ -13,6 +14,9 @@ Version 0.4.0 · Python 3.11+
 
 **Research report:**
 [TrustLens AI: Human-Governed Machine Learning for Reliability-Aware Risk Classification](reports/TrustLens_AI_Research_Report.pdf)
+
+**Archived preprint:**
+[Zenodo DOI 10.5281/zenodo.22664688](https://doi.org/10.5281/zenodo.22664688)
 
 **One-page research summary:**
 [TrustLens AI supervisor brief](reports/TrustLens_AI_One_Page_Research_Summary.pdf)
