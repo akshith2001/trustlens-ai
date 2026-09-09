@@ -89,7 +89,9 @@ def load_vignettes(path: Path) -> tuple[Vignette, ...]:
         if record.expected_action not in ACTIONS:
             raise ValueError(f"invalid expected action in {record.vignette_id}")
         if _derived_action(record) != record.expected_action:
-            raise ValueError(f"scoring key conflicts with governance policy in {record.vignette_id}")
+            raise ValueError(
+                f"scoring key conflicts with governance policy in {record.vignette_id}"
+            )
         required = {
             "provenance",
             "uncertainty",
@@ -127,7 +129,10 @@ def score_action(vignette: Vignette, selected_action: str) -> dict[str, bool]:
     if selected_action not in ACTIONS:
         raise ValueError(f"selected_action must be one of {sorted(ACTIONS)}")
     correct = selected_action == vignette.expected_action
-    critical_error = selected_action == "continue_with_monitoring" and vignette.expected_action == "pause_and_investigate"
+    critical_error = (
+        selected_action == "continue_with_monitoring"
+        and vignette.expected_action == "pause_and_investigate"
+    )
     return {"correct": correct, "critical_error": critical_error}
 
 
@@ -136,7 +141,9 @@ def build_manifest(path: Path) -> dict[str, Any]:
     return {
         "status": "designed_not_run",
         "vignette_count": len(vignettes),
-        "category_counts": dict(sorted(Counter(item.category for item in vignettes).items())),
+        "category_counts": dict(
+            sorted(Counter(item.category for item in vignettes).items())
+        ),
         "arms": {
             arm: sorted(render_vignette(vignettes[0], arm))
             for arm in ("score", "explain", "contract")
@@ -149,8 +156,12 @@ def build_manifest(path: Path) -> dict[str, Any]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--vignettes", type=Path, default=Path("data/pilot_vignettes.json"))
-    parser.add_argument("--output", type=Path, default=Path("results/pilot_vignette_manifest.json"))
+    parser.add_argument(
+        "--vignettes", type=Path, default=Path("data/pilot_vignettes.json")
+    )
+    parser.add_argument(
+        "--output", type=Path, default=Path("results/pilot_vignette_manifest.json")
+    )
     args = parser.parse_args()
     manifest = build_manifest(args.vignettes)
     args.output.parent.mkdir(parents=True, exist_ok=True)

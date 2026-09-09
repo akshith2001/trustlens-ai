@@ -65,9 +65,7 @@ def test_status_cannot_imply_completed_study(tmp_path: Path) -> None:
             "unique",
         ),
         (
-            lambda payload: payload["vignettes"][0].update(
-                {"category": "unknown"}
-            ),
+            lambda payload: payload["vignettes"][0].update({"category": "unknown"}),
             "three cases",
         ),
         (
