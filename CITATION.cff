@@ -7,6 +7,7 @@ date-released: 2026-08-26
 authors:
   - family-names: Moharampudi
     given-names: Akshith
+    orcid: "https://orcid.org/0009-0009-3177-8492"
 repository-code: "https://github.com/akshith2001/trustlens-ai"
 license: Apache-2.0
 url: "https://trustlens-governance-ai.streamlit.app/"
@@ -33,10 +34,12 @@ references:
     authors:
       - family-names: Moharampudi
         given-names: Akshith
+        orcid: "https://orcid.org/0009-0009-3177-8492"
     repository-code: "https://github.com/akshith2001/hospitality-sustainability-ai"
   - type: software
     title: "Cross-Sector Greenhouse Gas Scenario Model"
     authors:
       - family-names: Moharampudi
         given-names: Akshith
+        orcid: "https://orcid.org/0009-0009-3177-8492"
     repository-code: "https://github.com/akshith2001/ghg-scenario-model"
