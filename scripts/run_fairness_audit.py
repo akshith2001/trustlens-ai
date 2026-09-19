@@ -47,8 +47,11 @@ def main() -> None:
         or audit.gender_reason != GENDER_ASSESSABILITY_REASON
     ):
         raise ValueError("Unexpected gender assessability metadata")
-    print(f"Gender fairness: {GENDER_ASSESSABILITY_STATUS}")
-    print(f"Reason: {GENDER_ASSESSABILITY_REASON}")
+    print("Gender fairness: not_assessable")
+    print(
+        "Reason: The source combines sex and marital status, and UCI states that "
+        "sex cannot be reliably recovered for every code."
+    )
     display_group("Age-band diagnostics", audit.age_results)
     display_group(
         "Recorded foreign-worker-code diagnostics",
