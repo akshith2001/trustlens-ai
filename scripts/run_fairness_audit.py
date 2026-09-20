@@ -1,7 +1,11 @@
 """Run development-set subgroup diagnostics and assessability checks."""
 
 from trustlens.data import load_credit_dataset
-from trustlens.fairness import audit_credit_subgroups
+from trustlens.fairness import (
+    GENDER_ASSESSABILITY_REASON,
+    GENDER_ASSESSABILITY_STATUS,
+    audit_credit_subgroups,
+)
 
 
 def display_group(title: str, results) -> None:
@@ -38,8 +42,16 @@ def display_group(title: str, results) -> None:
 
 def main() -> None:
     audit = audit_credit_subgroups(load_credit_dataset())
-    print(f"Gender fairness: {audit.gender_status}")
-    print(f"Reason: {audit.gender_reason}")
+    if (
+        audit.gender_status != GENDER_ASSESSABILITY_STATUS
+        or audit.gender_reason != GENDER_ASSESSABILITY_REASON
+    ):
+        raise ValueError("Unexpected gender assessability metadata")
+    print("Gender fairness: not_assessable")
+    print(
+        "Reason: The source combines sex and marital status, and UCI states that "
+        "sex cannot be reliably recovered for every code."
+    )
     display_group("Age-band diagnostics", audit.age_results)
     display_group(
         "Recorded foreign-worker-code diagnostics",

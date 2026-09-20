@@ -13,6 +13,12 @@ from trustlens.calibration import (
 from trustlens.data import CreditDataset
 from trustlens.features import GOVERNED_EXCLUDED_FEATURES
 
+GENDER_ASSESSABILITY_STATUS = "not_assessable"
+GENDER_ASSESSABILITY_REASON = (
+    "The source combines sex and marital status, and UCI states that "
+    "sex cannot be reliably recovered for every code."
+)
+
 
 @dataclass(frozen=True)
 class GroupMetrics:
@@ -110,11 +116,8 @@ def audit_credit_subgroups(dataset: CreditDataset) -> FairnessAudit:
         lambda value: f"recorded_code_{value}"
     )
     return FairnessAudit(
-        gender_status="not_assessable",
-        gender_reason=(
-            "The source combines sex and marital status, and UCI states that "
-            "sex cannot be reliably recovered for every code."
-        ),
+        gender_status=GENDER_ASSESSABILITY_STATUS,
+        gender_reason=GENDER_ASSESSABILITY_REASON,
         age_results=subgroup_metrics(actual, predicted, age_groups),
         foreign_worker_code_results=subgroup_metrics(actual, predicted, worker_codes),
     )
