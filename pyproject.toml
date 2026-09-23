@@ -25,7 +25,7 @@ dependencies = [
     "numpy>=2.4.6",
     "pandas>=2.3",
     "scikit-learn>=1.9.1",
-    "streamlit>=1.62",
+    "streamlit>=1.64.0",
     "uvicorn>=0.41",
 ]
 
